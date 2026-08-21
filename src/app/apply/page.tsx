@@ -120,7 +120,7 @@ export default function ApplyPage() {
               <div className="text-center">
                 <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-navy font-bold text-xl mx-auto mb-3">3</div>
                 <h4 className="font-bold text-navy mb-2">Submit</h4>
-                <p className="text-gray-600 text-sm">Email to PM@lifelongpropertymanagement.com or drop off in person.</p>
+                <p className="text-gray-600 text-sm">Email to pm@lifelong.com or drop off in person.</p>
               </div>
             </div>
 
@@ -130,7 +130,7 @@ export default function ApplyPage() {
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <a
-                  href="mailto:PM@lifelongpropertymanagement.com"
+                  href="mailto:pm@lifelong.com"
                   className="inline-block bg-navy text-white px-6 py-2 rounded-lg font-semibold hover:bg-rust-orange transition text-sm"
                 >
                   Email Us

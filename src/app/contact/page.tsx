@@ -120,8 +120,8 @@ export default function ContactPage() {
             </div>
             <div className="bg-white rounded-lg shadow p-6 text-center">
               <h3 className="font-bold text-navy text-lg mb-3">Email</h3>
-              <a href="mailto:PM@lifelongpropertymanagement.com" className="text-gray-600 text-sm hover:text-rust-orange transition">
-                PM@lifelongpropertymanagement.com
+              <a href="mailto:pm@lifelong.com" className="text-gray-600 text-sm hover:text-rust-orange transition">
+                pm@lifelong.com
               </a>
             </div>
           </div>
