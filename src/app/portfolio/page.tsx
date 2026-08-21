@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
+const PortfolioMap = lazy(() => import('../components/PortfolioMap'));
 
 interface Property {
   name: string;
@@ -113,6 +114,17 @@ export default function PortfolioPage() {
           <p className="text-xl text-gray-200">
             {properties.length} properties across Central Texas and beyond — owned and managed by LLPM since 1998.
           </p>
+        </div>
+      </section>
+
+      {/* Map */}
+      <section className="bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <h2 className="text-2xl font-bold text-navy mb-2">Portfolio Map</h2>
+          <p className="text-gray-500 text-sm mb-4">Click any pin to see property details.</p>
+          <Suspense fallback={<div className="h-96 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">Loading map...</div>}>
+            <PortfolioMap />
+          </Suspense>
         </div>
       </section>
 
