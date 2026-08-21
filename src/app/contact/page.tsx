@@ -53,7 +53,7 @@ export default function ContactPage() {
             {/* Contact Info */}
             <div className="bg-white rounded-lg shadow p-8">
               <h3 className="text-xl font-bold text-navy mb-6">Phone</h3>
-              <p className="text-gray-600 text-lg mb-2">(512) 555-0123</p>
+              <p className="text-gray-600 text-lg mb-2">(512) 892-6001</p>
               <p className="text-sm text-gray-500">Call us during business hours</p>
             </div>
 
@@ -61,10 +61,10 @@ export default function ContactPage() {
               <h3 className="text-xl font-bold text-navy mb-6">Email</h3>
               <p className="text-gray-600 text-lg mb-2">
                 <a
-                  href="mailto:info@lifelongpropertymanagement.com"
+                  href="mailto:PM@lifelongpropertymanagement.com"
                   className="hover:text-rust-orange transition"
                 >
-                  info@lifelongpropertymanagement.com
+                  PM@lifelongpropertymanagement.com
                 </a>
               </p>
               <p className="text-sm text-gray-500">We respond within 24 hours</p>
@@ -72,7 +72,7 @@ export default function ContactPage() {
 
             <div className="bg-white rounded-lg shadow p-8">
               <h3 className="text-xl font-bold text-navy mb-6">Office</h3>
-              <p className="text-gray-600 text-lg mb-2">Austin, TX 78704</p>
+              <p className="text-gray-600 text-lg mb-2">5716 Hwy 290 West #200<br />Austin, TX 78735</p>
               <p className="text-sm text-gray-500">Central Texas</p>
             </div>
           </div>

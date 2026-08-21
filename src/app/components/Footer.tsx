@@ -46,13 +46,13 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">Contact Us</h3>
             <p className="text-gray-300 text-sm mb-2">
-              <strong>Phone:</strong> (512) 555-0123
+              <strong>Phone:</strong> (512) 892-6001
             </p>
             <p className="text-gray-300 text-sm mb-2">
-              <strong>Email:</strong> info@lifelongpropertymanagement.com
+              <strong>Email:</strong> PM@lifelongpropertymanagement.com
             </p>
             <p className="text-gray-300 text-sm">
-              <strong>Address:</strong> Austin, TX 78704
+              <strong>Address:</strong> 5716 Hwy 290 West #200, Austin, TX 78735
             </p>
           </div>
         </div>
