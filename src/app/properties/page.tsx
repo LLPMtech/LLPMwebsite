@@ -8,80 +8,122 @@ interface Property {
   name: string;
   address: string;
   type: 'Retail' | 'Office' | 'Warehouse' | 'Flex';
-  size: string;
-  available: boolean;
+  status: 'For Lease' | 'For Sale';
+  loopnetUrl: string;
   description: string;
-  image?: string;
 }
 
-// Sample data - replace with dynamic data from your backend
 const properties: Property[] = [
   {
     id: '1',
-    name: 'The Hangars - Building A',
-    address: 'Del Valle, Austin TX',
-    type: 'Warehouse',
-    size: '5,000 SF',
-    available: true,
-    description: 'Climate-controlled warehouse space ideal for light manufacturing or storage.',
+    name: 'Liberty Meadows Plaza',
+    address: '12701 W Tx-29 Hwy, Liberty Hill, TX 78642',
+    type: 'Retail',
+    status: 'For Lease',
+    loopnetUrl: 'https://www.loopnet.com/Listing/12701-W-Tx-29-Hwy-Liberty-Hill-TX/19745022/',
+    description: 'Newly renovated strip center with pylon signage, dedicated turn lane, and 63 parking spaces.',
   },
   {
     id: '2',
-    name: 'Downtown Office Plaza',
-    address: 'Central Austin, TX',
-    type: 'Office',
-    size: '2,500 SF',
-    available: false,
-    description: 'Professional office space with modern amenities and parking.',
+    name: 'Rio Gabriel Plaza',
+    address: '13750 W Highway 29, Liberty Hill, TX 78642',
+    type: 'Retail',
+    status: 'For Lease',
+    loopnetUrl: 'https://www.loopnet.com/Listing/13740-W-State-Highway-29-Liberty-Hill-TX/38626189/',
+    description: 'Retail space in Liberty Hill\'s growing corridor along W Highway 29.',
   },
   {
     id: '3',
-    name: 'Retail Center - Suite 100',
-    address: 'East Austin, TX',
+    name: '13740 W State Highway 29',
+    address: '13740 W State Highway 29, Liberty Hill, TX 78642',
     type: 'Retail',
-    size: '1,200 SF',
-    available: true,
-    description: 'High-traffic retail location with excellent visibility and accessibility.',
+    status: 'For Lease',
+    loopnetUrl: 'https://www.loopnet.com/Listing/13740-W-State-Highway-29-Liberty-Hill-TX/38626189/',
+    description: 'High-visibility retail space along State Highway 29 in Liberty Hill.',
   },
   {
     id: '4',
-    name: 'Flex Industrial Space',
-    address: 'Industrial District, Austin TX',
-    type: 'Flex',
-    size: '8,000 SF',
-    available: true,
-    description: 'Versatile flex space suitable for various commercial uses.',
+    name: 'Ranchitos Office',
+    address: '3303 Shell Rd, Georgetown, TX 78628',
+    type: 'Office',
+    status: 'For Lease',
+    loopnetUrl: 'https://www.loopnet.com/company/hawkins-family-partners/4ev29nll/',
+    description: 'Professional office space in Georgetown.',
   },
   {
     id: '5',
-    name: 'Tech Park Office Suite',
-    address: 'North Austin, TX',
-    type: 'Office',
-    size: '3,200 SF',
-    available: true,
-    description: 'Modern office with collaborative workspace and tech-ready infrastructure.',
+    name: '320 N Ridge',
+    address: '320 N Ridge Rd, Marble Falls, TX 78654',
+    type: 'Flex',
+    status: 'For Lease',
+    loopnetUrl: 'https://www.loopnet.com/company/hawkins-family-partners/4ev29nll/',
+    description: 'Versatile flex space in Marble Falls suitable for a variety of commercial uses.',
   },
   {
     id: '6',
-    name: 'Neighborhood Retail',
-    address: 'West Lake Hills, TX',
+    name: '2019 Clovis R Barker Rd - Warehouse or Office',
+    address: '2019 Clovis R Barker Rd, San Marcos, TX 78666',
+    type: 'Office',
+    status: 'For Lease',
+    loopnetUrl: 'https://www.loopnet.com/company/hawkins-family-partners/4ev29nll/',
+    description: 'Flexible warehouse or office space in San Marcos.',
+  },
+  {
+    id: '7',
+    name: 'MoPac 6 - Lab Space',
+    address: '3701 Drossett Dr, Austin, TX 78744',
+    type: 'Flex',
+    status: 'For Lease',
+    loopnetUrl: 'https://www.loopnet.com/company/hawkins-family-partners/4ev29nll/',
+    description: 'Specialized lab and flex space near MoPac in South Austin.',
+  },
+  {
+    id: '8',
+    name: '1909 E William Cannon Dr',
+    address: '1909 E William Cannon Dr, Austin, TX 78744',
     type: 'Retail',
-    size: '900 SF',
-    available: false,
-    description: 'Corner retail location with good foot traffic.',
+    status: 'For Lease',
+    loopnetUrl: 'https://www.loopnet.com/company/hawkins-family-partners/4ev29nll/',
+    description: 'Retail space on high-traffic East William Cannon Drive in South Austin.',
+  },
+  {
+    id: '9',
+    name: '9125 W Highway 71',
+    address: '9125 W Highway 71, Austin, TX 78735',
+    type: 'Retail',
+    status: 'For Lease',
+    loopnetUrl: 'https://www.loopnet.com/company/hawkins-family-partners/4ev29nll/',
+    description: 'Retail space along West Highway 71 in Austin.',
+  },
+  {
+    id: '10',
+    name: '5508 N Navarro St',
+    address: '5508 N Navarro St, Victoria, TX 77904',
+    type: 'Retail',
+    status: 'For Sale',
+    loopnetUrl: 'https://www.loopnet.com/company/hawkins-family-partners/4ev29nll/',
+    description: 'Retail property for sale in Victoria, TX.',
   },
 ];
 
+const typeColors: Record<string, string> = {
+  Retail: 'bg-blue-100 text-blue-800',
+  Office: 'bg-green-100 text-green-800',
+  Warehouse: 'bg-yellow-100 text-yellow-800',
+  Flex: 'bg-purple-100 text-purple-800',
+};
+
 export default function PropertiesPage() {
-  const [selectedType, setSelectedType] = useState<string>('All');
-  const [showAvailableOnly, setShowAvailableOnly] = useState(false);
+  const [selectedType, setSelectedType] = useState('All');
+  const [selectedStatus, setSelectedStatus] = useState('All');
 
   const types = ['All', 'Retail', 'Office', 'Warehouse', 'Flex'];
+  const statuses = ['All', 'For Lease', 'For Sale'];
 
   const filtered = properties.filter((p) => {
     const typeMatch = selectedType === 'All' || p.type === selectedType;
-    const availMatch = !showAvailableOnly || p.available;
-    return typeMatch && availMatch;
+    const statusMatch = selectedStatus === 'All' || p.status === selectedStatus;
+    return typeMatch && statusMatch;
   });
 
   return (
@@ -89,52 +131,56 @@ export default function PropertiesPage() {
       {/* Header */}
       <section className="bg-navy text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-4">Our Properties</h1>
-          <p className="text-xl text-gray-200">
-            Explore our diverse portfolio of commercial spaces across Central Texas.
+          <h1 className="text-4xl font-bold mb-4">Available Properties</h1>
+          <p className="text-xl text-gray-200 mb-6">
+            Commercial spaces for lease and sale across Central Texas.
           </p>
+          <a
+            href="https://www.loopnet.com/company/hawkins-family-partners/4ev29nll/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-gold text-navy px-6 py-3 rounded-lg font-bold hover:bg-opacity-90 transition"
+          >
+            View All Listings on LoopNet →
+          </a>
         </div>
       </section>
 
       {/* Filters */}
       <section className="bg-white border-b border-gray-200 sticky top-16 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-            {/* Type Filter */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex flex-wrap gap-6 items-center">
             <div>
-              <label className="block text-sm font-medium text-navy mb-2">
-                Property Type
-              </label>
-              <div className="flex flex-wrap gap-2">
-                {types.map((type) => (
-                  <button
-                    key={type}
-                    onClick={() => setSelectedType(type)}
-                    className={`px-4 py-2 rounded-lg font-medium transition ${
-                      selectedType === type
-                        ? 'bg-gold text-navy'
-                        : 'bg-gray-200 text-navy hover:bg-gray-300'
-                    }`}
-                  >
-                    {type}
-                  </button>
-                ))}
-              </div>
+              <span className="text-sm font-medium text-navy mr-3">Type:</span>
+              {types.map((type) => (
+                <button
+                  key={type}
+                  onClick={() => setSelectedType(type)}
+                  className={`mr-2 px-3 py-1 rounded-lg text-sm font-medium transition ${
+                    selectedType === type
+                      ? 'bg-gold text-navy'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {type}
+                </button>
+              ))}
             </div>
-
-            {/* Availability Filter */}
-            <div className="flex items-end">
-              <label className="flex items-center space-x-2 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={showAvailableOnly}
-                  onChange={(e) => setShowAvailableOnly(e.target.checked)}
-                  className="w-4 h-4 accent-gold"
-                />
-                <span className="text-sm font-medium text-navy">
-                  Available Only
-                </span>
-              </label>
+            <div>
+              <span className="text-sm font-medium text-navy mr-3">Status:</span>
+              {statuses.map((status) => (
+                <button
+                  key={status}
+                  onClick={() => setSelectedStatus(status)}
+                  className={`mr-2 px-3 py-1 rounded-lg text-sm font-medium transition ${
+                    selectedStatus === status
+                      ? 'bg-gold text-navy'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {status}
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -143,62 +189,53 @@ export default function PropertiesPage() {
       {/* Properties Grid */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-gray-500 text-sm mb-6">{filtered.length} properties found</p>
           {filtered.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filtered.map((property) => (
                 <div
                   key={property.id}
-                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition"
+                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col"
                 >
-                  {/* Image Placeholder */}
-                  <div className="h-48 bg-gradient-to-br from-gold to-rust-orange flex items-center justify-center text-white">
-                    <span className="text-sm font-bold">{property.type}</span>
-                  </div>
+                  {/* Color Banner */}
+                  <div className="h-3 bg-gradient-to-r from-navy to-rust-orange" />
 
                   {/* Content */}
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-lg font-bold text-navy">{property.name}</h3>
-                      {property.available ? (
-                        <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
-                          Available
-                        </span>
-                      ) : (
-                        <span className="bg-gray-200 text-gray-800 text-xs px-2 py-1 rounded-full">
-                          Leased
-                        </span>
-                      )}
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex justify-between items-start mb-3">
+                      <span className={`text-xs px-2 py-1 rounded-full font-medium ${typeColors[property.type]}`}>
+                        {property.type}
+                      </span>
+                      <span className={`text-xs px-2 py-1 rounded-full font-medium ${
+                        property.status === 'For Lease'
+                          ? 'bg-green-100 text-green-800'
+                          : 'bg-orange-100 text-orange-800'
+                      }`}>
+                        {property.status}
+                      </span>
                     </div>
 
-                    <p className="text-sm text-gray-600 mb-4">{property.address}</p>
+                    <h3 className="text-lg font-bold text-navy mb-1">{property.name}</h3>
+                    <p className="text-sm text-gray-500 mb-4">{property.address}</p>
+                    <p className="text-gray-600 text-sm mb-6 flex-1">{property.description}</p>
 
-                    <div className="flex justify-between mb-4 text-sm">
-                      <span className="text-navy font-semibold">{property.size}</span>
-                      <span className="text-gray-500">{property.type}</span>
-                    </div>
-
-                    <p className="text-gray-600 text-sm mb-6">{property.description}</p>
-
-                    <Link
-                      href={`/properties/${property.id}`}
-                      className="inline-block w-full text-center bg-navy text-white py-2 rounded-lg hover:bg-rust-orange transition font-medium"
+                    <a
+                      href={property.loopnetUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full text-center bg-navy text-white py-2 rounded-lg hover:bg-rust-orange transition font-medium"
                     >
-                      View Details
-                    </Link>
+                      View on LoopNet →
+                    </a>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-xl text-gray-600 mb-4">
-                No properties match your criteria.
-              </p>
+              <p className="text-xl text-gray-600 mb-4">No properties match your filters.</p>
               <button
-                onClick={() => {
-                  setSelectedType('All');
-                  setShowAvailableOnly(false);
-                }}
+                onClick={() => { setSelectedType('All'); setSelectedStatus('All'); }}
                 className="bg-gold text-navy px-6 py-2 rounded-lg font-medium hover:bg-opacity-90 transition"
               >
                 Clear Filters
@@ -208,19 +245,29 @@ export default function PropertiesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* LoopNet CTA */}
       <section className="bg-navy text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Don't see what you're looking for?</h2>
+          <h2 className="text-3xl font-bold mb-4">Looking for something specific?</h2>
           <p className="text-lg mb-8 text-gray-200">
-            Contact us to learn about other opportunities or to discuss custom solutions.
+            View our full portfolio of available listings on LoopNet, or contact us directly to discuss your needs.
           </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-gold text-navy px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition"
-          >
-            Get in Touch
-          </Link>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="https://www.loopnet.com/company/hawkins-family-partners/4ev29nll/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gold text-navy px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition"
+            >
+              View All on LoopNet
+            </a>
+            <Link
+              href="/contact"
+              className="border-2 border-gold text-gold px-8 py-3 rounded-lg font-bold hover:bg-gold hover:text-navy transition"
+            >
+              Contact Us
+            </Link>
+          </div>
         </div>
       </section>
     </div>
