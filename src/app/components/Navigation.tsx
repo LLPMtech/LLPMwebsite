@@ -28,6 +28,9 @@ export default function Navigation() {
             <Link href="/" className="hover:text-gold transition">
               Home
             </Link>
+            <Link href="/portfolio" className="hover:text-gold transition">
+              Portfolio
+            </Link>
             <Link href="/properties" className="hover:text-gold transition">
               Properties
             </Link>
@@ -66,18 +69,13 @@ export default function Navigation() {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden pb-4 space-y-2">
-            <Link
-              href="/"
-              className="block px-3 py-2 rounded hover:bg-rust-orange"
-              onClick={() => setIsOpen(false)}
-            >
+            <Link href="/" className="block px-3 py-2 rounded hover:bg-rust-orange" onClick={() => setIsOpen(false)}>
               Home
             </Link>
-            <Link
-              href="/properties"
-              className="block px-3 py-2 rounded hover:bg-rust-orange"
-              onClick={() => setIsOpen(false)}
-            >
+            <Link href="/portfolio" className="block px-3 py-2 rounded hover:bg-rust-orange" onClick={() => setIsOpen(false)}>
+              Portfolio
+            </Link>
+            <Link href="/properties" className="block px-3 py-2 rounded hover:bg-rust-orange" onClick={() => setIsOpen(false)}>
               Properties
             </Link>
             <Link
