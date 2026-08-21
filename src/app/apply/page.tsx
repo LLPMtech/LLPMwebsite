@@ -8,127 +8,143 @@ export default function ApplyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold mb-4">Apply for Space</h1>
           <p className="text-xl text-gray-200">
-            Submit your application for available commercial properties.
+            Download and complete the appropriate application below.
           </p>
         </div>
       </section>
 
-      {/* Application Section */}
+      {/* Application Cards */}
       <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-lg shadow-lg p-12">
-            <h2 className="text-3xl font-bold text-navy mb-6">
-              Interested in Leasing Space?
-            </h2>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
-            <p className="text-lg text-gray-600 mb-8">
-              We're committed to finding the right tenant for our properties. To get started, please complete our comprehensive application form below.
-            </p>
-
-            {/* Application Steps */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-8 mb-12">
-              <h3 className="text-xl font-bold text-navy mb-6">Application Process</h3>
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-gold text-navy font-bold">
-                    1
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="text-lg font-semibold text-navy">Download Application</h4>
-                    <p className="text-gray-600">Get the application form below</p>
-                  </div>
+          {/* Commercial */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="bg-navy px-8 py-5">
+              <h2 className="text-2xl font-bold text-white">Commercial Application</h2>
+              <p className="text-gray-300 text-sm mt-1">Office, retail, warehouse, and flex space</p>
+            </div>
+            <div className="p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                  <h3 className="font-bold text-navy text-lg mb-3">What's Included</h3>
+                  <ul className="space-y-2 text-gray-600 text-sm">
+                    <li className="flex items-start"><span className="text-gold mr-2 font-bold">✓</span> Personal & business information</li>
+                    <li className="flex items-start"><span className="text-gold mr-2 font-bold">✓</span> Credit history & banking references</li>
+                    <li className="flex items-start"><span className="text-gold mr-2 font-bold">✓</span> Business credit references</li>
+                    <li className="flex items-start"><span className="text-gold mr-2 font-bold">✓</span> Full financial statement</li>
+                    <li className="flex items-start"><span className="text-gold mr-2 font-bold">✓</span> Credit report authorization</li>
+                  </ul>
                 </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-gold text-navy font-bold">
-                    2
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="text-lg font-semibold text-navy">Complete Information</h4>
-                    <p className="text-gray-600">Provide your business and financial details</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-gold text-navy font-bold">
-                    3
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="text-lg font-semibold text-navy">Submit & Review</h4>
-                    <p className="text-gray-600">Our team reviews your application promptly</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-gold text-navy font-bold">
-                    4
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="text-lg font-semibold text-navy">Follow Up</h4>
-                    <p className="text-gray-600">We'll contact you within 2-3 business days</p>
-                  </div>
+                <div>
+                  <h3 className="font-bold text-navy text-lg mb-3">You'll Also Need</h3>
+                  <ul className="space-y-2 text-gray-600 text-sm">
+                    <li className="flex items-start"><span className="text-rust-orange mr-2 font-bold">→</span> Copy of Driver's License</li>
+                    <li className="flex items-start"><span className="text-rust-orange mr-2 font-bold">→</span> Copy of Social Security Card</li>
+                    <li className="flex items-start"><span className="text-rust-orange mr-2 font-bold">→</span> Business Plan</li>
+                    <li className="flex items-start"><span className="text-rust-orange mr-2 font-bold">→</span> Resume / Biography</li>
+                    <li className="flex items-start"><span className="text-rust-orange mr-2 font-bold">→</span> Certificate of Corporation (if applicable)</li>
+                  </ul>
                 </div>
               </div>
-            </div>
-
-            {/* Application Form Section */}
-            <div className="border-2 border-gold rounded-lg p-8 bg-gold bg-opacity-5 mb-8">
-              <h3 className="text-2xl font-bold text-navy mb-4">Download Application Form</h3>
-              <p className="text-gray-600 mb-6">
-                Please download and complete the application form. Once filled out, you can email it to us or submit it in person.
-              </p>
-              <div className="space-y-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="#"
-                  className="inline-block bg-gold text-navy px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition"
+                  href="/commercial-lease-application.pdf"
+                  download
+                  className="flex-1 text-center bg-gold text-navy px-6 py-3 rounded-lg font-bold hover:bg-opacity-90 transition"
                 >
-                  📥 Download Application PDF
+                  📥 Download Commercial Application
                 </a>
-                <p className="text-sm text-gray-600">
-                  Note: Replace the "#" link above with your actual PDF link once it's ready
-                </p>
-              </div>
-            </div>
-
-            {/* Quick Contact CTA */}
-            <div className="bg-navy text-white rounded-lg p-8 text-center">
-              <h3 className="text-2xl font-bold mb-4">Have Questions?</h3>
-              <p className="mb-6 text-gray-200">
-                Our team is ready to help answer any questions about our available properties and the application process.
-              </p>
-              <Link
-                href="/contact"
-                className="inline-block bg-gold text-navy px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition"
-              >
-                Contact Us Now
-              </Link>
-            </div>
-
-            {/* Required Information Checklist */}
-            <div className="mt-12 pt-12 border-t border-gray-200">
-              <h3 className="text-xl font-bold text-navy mb-6">What Information You'll Need</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-navy mb-3">Business Information</h4>
-                  <ul className="space-y-2 text-gray-600 text-sm">
-                    <li>✓ Business name & type</li>
-                    <li>✓ Years in business</li>
-                    <li>✓ Number of employees</li>
-                    <li>✓ Business description</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-navy mb-3">Financial & References</h4>
-                  <ul className="space-y-2 text-gray-600 text-sm">
-                    <li>✓ Financial statements</li>
-                    <li>✓ Bank references</li>
-                    <li>✓ Trade references</li>
-                    <li>✓ Personal guarantor info</li>
-                  </ul>
-                </div>
+                <a
+                  href="/tenant-contact-form.pdf"
+                  download
+                  className="flex-1 text-center bg-navy text-white px-6 py-3 rounded-lg font-bold hover:bg-rust-orange transition"
+                >
+                  📥 Download Tenant Contact Form
+                </a>
               </div>
             </div>
           </div>
+
+          {/* Residential */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="bg-rust-orange px-8 py-5">
+              <h2 className="text-2xl font-bold text-white">Residential Application</h2>
+              <p className="text-orange-100 text-sm mt-1">Residential lease applicants</p>
+            </div>
+            <div className="p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                  <h3 className="font-bold text-navy text-lg mb-3">What's Included</h3>
+                  <ul className="space-y-2 text-gray-600 text-sm">
+                    <li className="flex items-start"><span className="text-gold mr-2 font-bold">✓</span> Personal information & ID</li>
+                    <li className="flex items-start"><span className="text-gold mr-2 font-bold">✓</span> Rental & employment history</li>
+                    <li className="flex items-start"><span className="text-gold mr-2 font-bold">✓</span> Income & financial information</li>
+                    <li className="flex items-start"><span className="text-gold mr-2 font-bold">✓</span> Occupant & pet information</li>
+                    <li className="flex items-start"><span className="text-gold mr-2 font-bold">✓</span> Credit report authorization</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-bold text-navy text-lg mb-3">Important Notes</h3>
+                  <ul className="space-y-2 text-gray-600 text-sm">
+                    <li className="flex items-start"><span className="text-rust-orange mr-2 font-bold">→</span> Each occupant 18+ must submit a separate application</li>
+                    <li className="flex items-start"><span className="text-rust-orange mr-2 font-bold">→</span> Co-applicants must submit separately</li>
+                    <li className="flex items-start"><span className="text-rust-orange mr-2 font-bold">→</span> View property before submitting if possible</li>
+                    <li className="flex items-start"><span className="text-rust-orange mr-2 font-bold">→</span> Non-refundable application fee applies</li>
+                  </ul>
+                </div>
+              </div>
+              <a
+                href="/residential-lease-application.pdf"
+                download
+                className="block text-center bg-gold text-navy px-6 py-3 rounded-lg font-bold hover:bg-opacity-90 transition"
+              >
+                📥 Download Residential Application
+              </a>
+            </div>
+          </div>
+
+          {/* Submission Instructions */}
+          <div className="bg-white rounded-lg shadow p-8">
+            <h3 className="text-xl font-bold text-navy mb-6">How to Submit Your Application</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-navy font-bold text-xl mx-auto mb-3">1</div>
+                <h4 className="font-bold text-navy mb-2">Download</h4>
+                <p className="text-gray-600 text-sm">Download and complete the appropriate application form above.</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-navy font-bold text-xl mx-auto mb-3">2</div>
+                <h4 className="font-bold text-navy mb-2">Complete</h4>
+                <p className="text-gray-600 text-sm">Fill out all required fields and gather supporting documents.</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-navy font-bold text-xl mx-auto mb-3">3</div>
+                <h4 className="font-bold text-navy mb-2">Submit</h4>
+                <p className="text-gray-600 text-sm">Email to PM@lifelongpropertymanagement.com or drop off in person.</p>
+              </div>
+            </div>
+
+            <div className="bg-blue-50 border border-blue-100 rounded-lg p-6 text-center">
+              <p className="text-gray-700 mb-4">
+                Questions about the application process? We're happy to help.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <a
+                  href="mailto:PM@lifelongpropertymanagement.com"
+                  className="inline-block bg-navy text-white px-6 py-2 rounded-lg font-semibold hover:bg-rust-orange transition text-sm"
+                >
+                  Email Us
+                </a>
+                <a
+                  href="tel:5128926001"
+                  className="inline-block bg-navy text-white px-6 py-2 rounded-lg font-semibold hover:bg-rust-orange transition text-sm"
+                >
+                  Call (512) 892-6001
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
     </div>
