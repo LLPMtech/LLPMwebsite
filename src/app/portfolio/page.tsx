@@ -8,7 +8,76 @@ interface Property {
   address: string;
   city: string;
   state: string;
+  image?: string;
 }
+
+const properties: Property[] = [
+  { name: '101 Caribbean Drive', address: '101 Caribbean Drive', city: 'Corpus Christi', state: 'TX' },
+  { name: '11183 Circle Dr.', address: '11183 Circle Dr.', city: 'Austin', state: 'TX', image: '/11183 Circle Dr.JPG' },
+  { name: '11701 Old FM 2243 West', address: '11701 Old FM 2243 West', city: 'Leander', state: 'TX' },
+  { name: '12705 Hwy 29 W', address: '12705 Hwy 29 W', city: 'Liberty Hill', state: 'TX' },
+  { name: '13740 West Hwy 29', address: '13740 West Hwy 29', city: 'Liberty Hill', state: 'TX' },
+  { name: '13750 Hwy 29 West', address: '13750 Hwy 29 West', city: 'Liberty Hill', state: 'TX' },
+  { name: '18683 & 18685 FM 1431', address: '18683 & 18685 FM 1431', city: 'Jonestown', state: 'TX' },
+  { name: '1909 E. William Cannon Dr.', address: '1909 E. William Cannon Dr.', city: 'Austin', state: 'TX', image: '/1909 E William Cannon.jpg' },
+  { name: '201 FM 3237', address: '201 FM 3237', city: 'Wimberley', state: 'TX' },
+  { name: '2010 E Oltorf St', address: '2010 E Oltorf St', city: 'Austin', state: 'TX', image: '/2010 E Oltorf.jpg' },
+  { name: '2019 Clovis Barker Road', address: '2019 Clovis Barker Road', city: 'San Marcos', state: 'TX' },
+  { name: '2100 Roselea Dr', address: '2100 Roselea Dr', city: 'Buchanan Dam', state: 'TX' },
+  { name: '21730 County Rd 501', address: '21730 County Rd 501', city: 'Bayfield', state: 'CO' },
+  { name: '2201 Lake Austin Blvd.', address: '2201 Lake Austin Blvd.', city: 'Austin', state: 'TX', image: '/2201 Lake Austin Blvd.jpg' },
+  { name: '2410 Hunter Road', address: '2410 Hunter Road', city: 'San Marcos', state: 'TX' },
+  { name: '2424 S Congress', address: '2424 S Congress', city: 'Austin', state: 'TX', image: '/2424 S Congress.jpg' },
+  { name: '2463 Hwy 71 East', address: '2463 Hwy 71 East', city: 'Del Valle', state: 'TX' },
+  { name: '3000 RR 1869', address: '3000 RR 1869', city: 'Liberty Hill', state: 'TX' },
+  { name: '305 E Morrow St', address: '305 E Morrow St', city: 'Georgetown', state: 'TX' },
+  { name: '320 North Ridge Rd.', address: '320 North Ridge Rd.', city: 'Marble Falls', state: 'TX' },
+  { name: '3301 Shell Road', address: '3301 Shell Road', city: 'Georgetown', state: 'TX' },
+  { name: '3303 Shell Road', address: '3303 Shell Road', city: 'Georgetown', state: 'TX' },
+  { name: '3317 N. Lamar', address: '3317 N. Lamar', city: 'Austin', state: 'TX', image: '/3317 N. Lamar.jpg' },
+  { name: '3701 Drossett Drive', address: '3701 Drossett Drive', city: 'Austin', state: 'TX', image: '/3701 Drossett.jpg' },
+  { name: '3900 S FM 620', address: '3900 S FM 620', city: 'Bee Caves', state: 'TX' },
+  { name: '4005 Reynosa Dr', address: '4005 Reynosa Dr', city: 'Austin', state: 'TX', image: '/4005 Reynosa.jpeg' },
+  { name: '4226 Laguna Shores', address: '4226 Laguna Shores', city: 'Corpus Christi', state: 'TX' },
+  { name: '4234 Laguna Shores (Event Center & Parking Lot)', address: '4234 Laguna Shores', city: 'Corpus Christi', state: 'TX' },
+  { name: '4242 Laguna Shores', address: '4242 Laguna Shores', city: 'Corpus Christi', state: 'TX' },
+  { name: '4345 West Post Rd Bldg 10', address: '4345 West Post Rd Bldg 10', city: 'Las Vegas', state: 'NV' },
+  { name: '5308 Burleson Rd.', address: '5308 Burleson Rd.', city: 'Austin', state: 'TX', image: '/5308 Burleson.jpg' },
+  { name: '5506 Hwy 290 West', address: '5506 Hwy 290 West', city: 'Austin', state: 'TX', image: '/5506 Hwy 290 W.jpg' },
+  { name: '5508 N. Navarro', address: '5508 N. Navarro', city: 'Victoria', state: 'TX' },
+  { name: '5615 FM 973 Bldg 1', address: '5615 S. FM 973 Bldg 1', city: 'Del Valle', state: 'TX' },
+  { name: '5615 FM 973 Bldg 2', address: '5615 FM 973 Bldg 2', city: 'Del Valle', state: 'TX' },
+  { name: '5615 FM 973 Bldg 3', address: '5615 FM 973 Bldg 3', city: 'Del Valle', state: 'TX' },
+  { name: '5615 FM 973 Bldg 4', address: '5615 FM 973 Bldg 4', city: 'Del Valle', state: 'TX' },
+  { name: '5615 FM 973 Bldg 5', address: '5615 FM 973 Bldg 5', city: 'Del Valle', state: 'TX' },
+  { name: '5615 FM 973 Bldg 6', address: '5615 FM 973 Bldg 6', city: 'Del Valle', state: 'TX' },
+  { name: '5615 FM 973 Bldg 7', address: '5615 FM 973 Bldg 7', city: 'Del Valle', state: 'TX' },
+  { name: '5615 FM 973 Bldg 8', address: '5615 FM 973 Bldg 8', city: 'Del Valle', state: 'TX' },
+  { name: '5615 FM 973 Bldg 9', address: '5615 FM 973 Bldg 9', city: 'Del Valle', state: 'TX' },
+  { name: '5721 Burnet Rd', address: '5721 Burnet Rd', city: 'Austin', state: 'TX', image: '/5721 Burnet.jpeg' },
+  { name: '5801 Burnet Rd', address: '5801 Burnet Rd', city: 'Austin', state: 'TX', image: '/5801 Burnet Rd.jpg' },
+  { name: '5809 Burnet Rd', address: '5809 Burnet Rd', city: 'Austin', state: 'TX', image: '/5809 Burnet.jpeg' },
+  { name: '611 S. Lamar', address: '611 S. Lamar', city: 'Austin', state: 'TX', image: '/611 S Lamar.png' },
+  { name: '6210 Hwy 290 West', address: '6210 Hwy 290 West', city: 'Austin', state: 'TX', image: '/6210 Hwy 290 W.jpg' },
+  { name: '6214 B Hwy 290 West', address: '6214 B Hwy 290 West', city: 'Austin', state: 'TX', image: '/6214 B Hwy 290 West.jpg' },
+  { name: '6902 Scenic Brook', address: '6902 Scenic Brook', city: 'Austin', state: 'TX', image: '/6902 Scenic Brook.jpeg' },
+  { name: '8111 Middle Court', address: '8111 Middle Court', city: 'Austin', state: 'TX', image: '/8111 Middle.jpeg' },
+  { name: '813 Morrow St', address: '813 Morrow St', city: 'Austin', state: 'TX', image: '/813 Morrow.jpg' },
+  { name: '8600 Hwy 290 West', address: '8600 Hwy 290 West', city: 'Austin', state: 'TX' },
+  { name: '8907 Circle Drive', address: '8907 Circle Drive', city: 'Austin', state: 'TX', image: '/8907 Circle Dr.jpeg' },
+  { name: '9110 US 183 S.', address: '9110 US 183 S.', city: 'Austin', state: 'TX' },
+  { name: '9125 Hwy 71 West', address: '9125 Hwy 71 West', city: 'Austin', state: 'TX', image: '/9125 Hwy 71.jpg' },
+  { name: '9616 E HWY 71', address: '9616 E HWY 71', city: 'Spicewood', state: 'TX' },
+  { name: '9725 Circle Drive', address: '9725 Circle Drive', city: 'Austin', state: 'TX', image: '/9725 Circle.jpg' },
+  { name: '9820 Circle Dr', address: '9820 Circle Dr', city: 'Austin', state: 'TX', image: '/9820 Circle Dr.jpg' },
+  { name: 'Bunton Creek Rd, 170 & 200', address: 'Bunton Creek Rd, 170 & 200', city: 'Kyle', state: 'TX' },
+  { name: 'Liberty Meadows Plaza', address: '12701 Hwy 29 West', city: 'Liberty Hill', state: 'TX' },
+  { name: 'Lockhart Property, 301 E San Antonio', address: '301 E San Antonio', city: 'Lockhart', state: 'TX' },
+  { name: 'Oak Acres Shopping Center', address: '5716 Hwy 290 West', city: 'Austin', state: 'TX', image: '/Oak Acres.png' },
+  { name: 'Plaza Lofts Condo, 311 West 5th St. #100', address: '311 West 5th St. #100', city: 'Austin', state: 'TX', image: '/311 West 5th.jpeg' },
+  { name: 'San Marcos Bldg, 1107-A Hwy 80 East', address: '1107-A Hwy 80 East', city: 'San Marcos', state: 'TX' },
+  { name: 'Uvalde 190.97 Acres JackHawk Mountain', address: '190.97 Acres JackHawk Mountain', city: 'Uvalde', state: 'TX' },
+];
 
 const properties: Property[] = [
   { name: '101 Caribbean Drive', address: '101 Caribbean Drive', city: 'Corpus Christi', state: 'TX' },
@@ -161,10 +230,21 @@ export default function PortfolioPage() {
                 {grouped[cityState].map((property, idx) => (
                   <div
                     key={idx}
-                    className="bg-white rounded-lg border border-gray-100 shadow-sm p-4 hover:shadow-md hover:border-gold transition"
+                    className="bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden hover:shadow-md hover:border-gold transition"
                   >
-                    <h3 className="font-semibold text-navy text-sm mb-1">{property.name}</h3>
-                    <p className="text-gray-400 text-xs">{property.address}</p>
+                    {property.image ? (
+                      <img
+                        src={property.image}
+                        alt={property.name}
+                        className="w-full h-40 object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-40 bg-gradient-to-br from-navy to-rust-orange" />
+                    )}
+                    <div className="p-4">
+                      <h3 className="font-semibold text-navy text-sm mb-1">{property.name}</h3>
+                      <p className="text-gray-400 text-xs">{property.address}</p>
+                    </div>
                   </div>
                 ))}
               </div>
