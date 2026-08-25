@@ -68,6 +68,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: 'LLPM Website <onboarding@resend.dev>',
       to: ['pm@lifelongpm.com'],
+      cc: ['lindsey@lifelongpropertymanagement.com'],
       subject: `New Contact Form Submission: ${subject}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
