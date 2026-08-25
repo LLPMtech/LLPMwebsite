@@ -133,3 +133,8 @@ export default function AboutPage() {
     </div>
   );
 }
+export const metadata = {
+  title: 'About Us',
+  description: 'Life Long Property Management is a family-owned business founded by Kris Hawkins in Austin, TX. From Doc Holidays to 68+ commercial properties across Central Texas.',
+  alternates: { canonical: '/about' },
+};
