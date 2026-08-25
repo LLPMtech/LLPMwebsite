@@ -12,15 +12,14 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center">
             <Image
               src="/logo.png"
               alt="LLPM Logo"
-              width={40}
-              height={40}
-              className="h-10 w-auto"
+              width={120}
+              height={60}
+              className="h-12 w-auto"
             />
-            <span className="text-sm font-bold hidden sm:inline">LLPM</span>
           </Link>
 
           {/* Desktop Navigation */}
