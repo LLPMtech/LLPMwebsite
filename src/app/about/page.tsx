@@ -120,9 +120,6 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-navy mb-10 text-center">Our Team</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
               <div className="border-2 border-rust-orange rounded-xl p-8 text-center">
-                <div className="w-20 h-20 bg-navy rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-gold">NP</span>
-                </div>
                 <h3 className="text-xl font-bold text-navy mb-1">Norman Phillips</h3>
                 <p className="text-rust-orange font-medium mb-4">Property Manager</p>
                 <a href="tel:5125434686" className="block text-gray-600 hover:text-navy transition text-sm mb-1">
@@ -134,9 +131,6 @@ export default function AboutPage() {
               </div>
 
               <div className="border-2 border-rust-orange rounded-xl p-8 text-center">
-                <div className="w-20 h-20 bg-navy rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-gold">LW</span>
-                </div>
                 <h3 className="text-xl font-bold text-navy mb-1">Lindsey Williams</h3>
                 <p className="text-rust-orange font-medium mb-4">Property Manager</p>
                 <a href="tel:5126689459" className="block text-gray-600 hover:text-navy transition text-sm mb-1">
