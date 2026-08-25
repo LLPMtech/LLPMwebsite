@@ -58,8 +58,8 @@ export default function TenantPortalPage() {
 
               <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 text-sm text-gray-600">
                 <strong className="text-navy">First time logging in?</strong> Contact us at{' '}
-                <a href="mailto:pm@lifelong.com" className="text-navy font-semibold underline">
-                  pm@lifelong.com
+                <a href="mailto:pm@lifelongpm.com" className="text-navy font-semibold underline">
+                  pm@lifelongpm.com
                 </a>{' '}
                 or call{' '}
                 <a href="tel:5128926001" className="text-navy font-semibold underline">
@@ -111,8 +111,8 @@ export default function TenantPortalPage() {
 
               <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 text-sm text-gray-600">
                 <strong className="text-navy">First time logging in?</strong> Contact us at{' '}
-                <a href="mailto:pm@lifelong.com" className="text-navy font-semibold underline">
-                  pm@lifelong.com
+                <a href="mailto:pm@lifelongpm.com" className="text-navy font-semibold underline">
+                  pm@lifelongpm.com
                 </a>{' '}
                 or call{' '}
                 <a href="tel:5128926001" className="text-navy font-semibold underline">

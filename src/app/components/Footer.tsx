@@ -49,7 +49,7 @@ export default function Footer() {
               <strong>Phone:</strong> (512) 892-6001
             </p>
             <p className="text-gray-300 text-sm mb-2">
-              <strong>Email:</strong> pm@lifelong.com
+              <strong>Email:</strong> pm@lifelongpm.com
             </p>
             <p className="text-gray-300 text-sm">
               <strong>Address:</strong> 5716 Hwy 290 West #200, Austin, TX 78735

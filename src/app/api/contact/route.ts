@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
     // Send email via Resend
     await resend.emails.send({
       from: 'LLPM Website <onboarding@resend.dev>',
-      to: ['pm@lifelong.com'],
+      to: ['pm@lifelongpm.com'],
       subject: `New Contact Form Submission: ${subject}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
@@ -119,7 +119,7 @@ export async function POST(req: NextRequest) {
             <p>If you need immediate assistance, please contact us directly:</p>
             <ul style="list-style: none; padding: 0;">
               <li style="padding: 4px 0;">📞 <strong>(512) 892-6001</strong></li>
-              <li style="padding: 4px 0;">✉️ <strong>pm@lifelong.com</strong></li>
+              <li style="padding: 4px 0;">✉️ <strong>pm@lifelongpm.com</strong></li>
               <li style="padding: 4px 0;">📍 <strong>5716 Hwy 290 West #200, Austin, TX 78735</strong></li>
             </ul>
             <p style="color: #999; font-size: 12px; margin-top: 24px;">Life Long Property Management | lifelongpropertymanagement.com</p>
