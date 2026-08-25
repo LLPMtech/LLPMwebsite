@@ -12,7 +12,6 @@ interface Property {
 
 const properties: Property[] = [
   { name: '101 Caribbean Drive', address: '101 Caribbean Drive', city: 'Corpus Christi', state: 'TX' },
-  { name: '1107 Hwy 80 E (Sign)', address: '1107 Hwy 80 E (Sign)', city: 'San Marcos', state: 'TX' },
   { name: '11183 Circle Dr.', address: '11183 Circle Dr.', city: 'Austin', state: 'TX' },
   { name: '11701 Old FM 2243 West', address: '11701 Old FM 2243 West', city: 'Leander', state: 'TX' },
   { name: '12705 Hwy 29 W', address: '12705 Hwy 29 W', city: 'Liberty Hill', state: 'TX' },
@@ -28,7 +27,6 @@ const properties: Property[] = [
   { name: '2201 Lake Austin Blvd.', address: '2201 Lake Austin Blvd.', city: 'Austin', state: 'TX' },
   { name: '2410 Hunter Road', address: '2410 Hunter Road', city: 'San Marcos', state: 'TX' },
   { name: '2424 S Congress', address: '2424 S Congress', city: 'Austin', state: 'TX' },
-  { name: '2443 E Hwy 71 Sign', address: '2443 E Hwy 71 Sign', city: 'Del Valle', state: 'TX' },
   { name: '2463 Hwy 71 East', address: '2463 Hwy 71 East', city: 'Del Valle', state: 'TX' },
   { name: '3000 RR 1869', address: '3000 RR 1869', city: 'Liberty Hill', state: 'TX' },
   { name: '305 E Morrow St', address: '305 E Morrow St', city: 'Georgetown', state: 'TX' },
@@ -45,7 +43,6 @@ const properties: Property[] = [
   { name: '4345 West Post Rd Bldg 10', address: '4345 West Post Rd Bldg 10', city: 'Las Vegas', state: 'NV' },
   { name: '5308 Burleson Rd.', address: '5308 Burleson Rd.', city: 'Austin', state: 'TX' },
   { name: '5506 Hwy 290 West', address: '5506 Hwy 290 West', city: 'Austin', state: 'TX' },
-  { name: '5506 Hwy 290 West Sign', address: '5506 Hwy 290 West Sign', city: 'Austin', state: 'TX' },
   { name: '5508 N. Navarro', address: '5508 N. Navarro', city: 'Victoria', state: 'TX' },
   { name: '5615 FM 973 Bldg 1', address: '5615 S. FM 973 Bldg 1', city: 'Del Valle', state: 'TX' },
   { name: '5615 FM 973 Bldg 2', address: '5615 FM 973 Bldg 2', city: 'Del Valle', state: 'TX' },
@@ -62,8 +59,6 @@ const properties: Property[] = [
   { name: '611 S. Lamar', address: '611 S. Lamar', city: 'Austin', state: 'TX' },
   { name: '6210 Hwy 290 West', address: '6210 Hwy 290 West', city: 'Austin', state: 'TX' },
   { name: '6214 B Hwy 290 West', address: '6214 B Hwy 290 West', city: 'Austin', state: 'TX' },
-  { name: '6214 Hwy 290 Sign', address: '6214 Hwy 290 Sign', city: 'Austin', state: 'TX' },
-  { name: '6230 S. Decatur Blvd. (Sign)', address: '6230 S. Decatur Blvd.', city: 'Las Vegas', state: 'NV' },
   { name: '6902 Scenic Brook', address: '6902 Scenic Brook', city: 'Austin', state: 'TX' },
   { name: '8111 Middle Court', address: '8111 Middle Court', city: 'Austin', state: 'TX' },
   { name: '813 Morrow St', address: '813 Morrow St', city: 'Austin', state: 'TX' },
