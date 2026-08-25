@@ -8,7 +8,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-navy text-white sticky top-0 z-50 shadow-lg">
+    <nav className="bg-white text-navy sticky top-0 z-50 shadow-lg border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -24,25 +24,25 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <Link href="/" className="hover:text-gold transition">
+            <Link href="/" className="text-navy hover:text-rust-orange transition font-medium">
               Home
             </Link>
-            <Link href="/about" className="hover:text-gold transition">
+            <Link href="/about" className="text-navy hover:text-rust-orange transition font-medium">
               About
             </Link>
-            <Link href="/portfolio" className="hover:text-gold transition">
+            <Link href="/portfolio" className="text-navy hover:text-rust-orange transition font-medium">
               Portfolio
             </Link>
-            <Link href="/properties" className="hover:text-gold transition">
+            <Link href="/properties" className="text-navy hover:text-rust-orange transition font-medium">
               Properties
             </Link>
-            <Link href="/tenant-portal" className="hover:text-gold transition">
+            <Link href="/tenant-portal" className="text-navy hover:text-rust-orange transition font-medium">
               Tenant Portal
             </Link>
-            <Link href="/apply" className="hover:text-gold transition">
+            <Link href="/apply" className="text-navy hover:text-rust-orange transition font-medium">
               Apply
             </Link>
-            <Link href="/contact" className="hover:text-gold transition">
+            <Link href="/contact" className="text-navy hover:text-rust-orange transition font-medium">
               Contact
             </Link>
           </div>
@@ -50,20 +50,10 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md hover:bg-rust-orange focus:outline-none"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-navy hover:bg-gray-100 focus:outline-none"
           >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
@@ -71,35 +61,35 @@ export default function Navigation() {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden pb-4 space-y-2">
-            <Link href="/" className="block px-3 py-2 rounded hover:bg-rust-orange" onClick={() => setIsOpen(false)}>
+            <Link href="/" className="block px-3 py-2 rounded text-navy hover:bg-gray-100 font-medium" onClick={() => setIsOpen(false)}>
               Home
             </Link>
-            <Link href="/about" className="block px-3 py-2 rounded hover:bg-rust-orange" onClick={() => setIsOpen(false)}>
+            <Link href="/about" className="block px-3 py-2 rounded text-navy hover:bg-gray-100 font-medium" onClick={() => setIsOpen(false)}>
               About
             </Link>
-            <Link href="/portfolio" className="block px-3 py-2 rounded hover:bg-rust-orange" onClick={() => setIsOpen(false)}>
+            <Link href="/portfolio" className="block px-3 py-2 rounded text-navy hover:bg-gray-100 font-medium" onClick={() => setIsOpen(false)}>
               Portfolio
             </Link>
-            <Link href="/properties" className="block px-3 py-2 rounded hover:bg-rust-orange" onClick={() => setIsOpen(false)}>
+            <Link href="/properties" className="block px-3 py-2 rounded text-navy hover:bg-gray-100 font-medium" onClick={() => setIsOpen(false)}>
               Properties
             </Link>
             <Link
               href="/tenant-portal"
-              className="block px-3 py-2 rounded hover:bg-rust-orange"
+              className="block px-3 py-2 rounded text-navy hover:bg-gray-100 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Tenant Portal
             </Link>
             <Link
               href="/apply"
-              className="block px-3 py-2 rounded hover:bg-rust-orange"
+              className="block px-3 py-2 rounded text-navy hover:bg-gray-100 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Apply
             </Link>
             <Link
               href="/contact"
-              className="block px-3 py-2 rounded hover:bg-rust-orange"
+              className="block px-3 py-2 rounded text-navy hover:bg-gray-100 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Contact
