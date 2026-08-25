@@ -77,7 +77,6 @@ const properties: Property[] = [
   { name: 'Bunton Creek Rd, 170 & 200', address: 'Bunton Creek Rd, 170 & 200', city: 'Kyle', state: 'TX' },
   { name: 'Liberty Meadows Plaza', address: '12701 Hwy 29 West', city: 'Liberty Hill', state: 'TX' },
   { name: 'Lockhart Property, 301 E San Antonio', address: '301 E San Antonio', city: 'Lockhart', state: 'TX' },
-  { name: 'Naneyo General', address: '5716 Hwy 290 W Suite 200', city: 'Austin', state: 'TX' },
   { name: 'Oak Acres Shopping Center', address: '5716 Hwy 290 West', city: 'Austin', state: 'TX' },
   { name: 'Plaza Lofts Condo, 311 West 5th St. #100', address: '311 West 5th St. #100', city: 'Austin', state: 'TX' },
   { name: 'San Marcos Bldg, 1107-A Hwy 80 East', address: '1107-A Hwy 80 East', city: 'San Marcos', state: 'TX' },
