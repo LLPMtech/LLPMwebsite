@@ -16,9 +16,9 @@ export default function Navigation() {
             <Image
               src="/logo.png"
               alt="LLPM Logo"
-              width={180}
-              height={72}
-              className="h-18 w-auto"
+              width={300}
+              height={100}
+              className="w-72 h-auto"
             />
           </Link>
 
