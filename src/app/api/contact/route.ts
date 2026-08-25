@@ -2,11 +2,69 @@ import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const HUBSPOT_API_KEY = process.env.HUBSPOT_API_KEY;
+
+async function createHubSpotContact(data: {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}) {
+  const [firstname, ...rest] = data.name.trim().split(' ');
+  const lastname = rest.join(' ') || '';
+
+  // Create or update contact
+  const contactRes = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${HUBSPOT_API_KEY}`,
+    },
+    body: JSON.stringify({
+      properties: {
+        firstname,
+        lastname,
+        email: data.email,
+        phone: data.phone || '',
+        lead_source: 'Website Contact Form',
+        hs_lead_status: 'NEW',
+      },
+    }),
+  });
+
+  const contact = await contactRes.json();
+  const contactId = contact.id;
+
+  if (!contactId) return;
+
+  // Log the message as a note on the contact
+  await fetch('https://api.hubapi.com/crm/v3/objects/notes', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${HUBSPOT_API_KEY}`,
+    },
+    body: JSON.stringify({
+      properties: {
+        hs_note_body: `Subject: ${data.subject}\n\n${data.message}`,
+        hs_timestamp: new Date().toISOString(),
+      },
+      associations: [
+        {
+          to: { id: contactId },
+          types: [{ associationCategory: 'HUBSPOT_DEFINED', associationTypeId: 202 }],
+        },
+      ],
+    }),
+  });
+}
 
 export async function POST(req: NextRequest) {
   try {
     const { name, email, phone, subject, message } = await req.json();
 
+    // Send email via Resend
     await resend.emails.send({
       from: 'LLPM Website <onboarding@resend.dev>',
       to: ['pm@lifelong.com'],
@@ -40,15 +98,13 @@ export async function POST(req: NextRequest) {
               <p style="font-weight: bold; color: #1F3A5F; margin: 0 0 8px;">Message:</p>
               <p style="margin: 0; white-space: pre-wrap;">${message}</p>
             </div>
-            <p style="margin-top: 16px; color: #999; font-size: 12px;">
-              Sent from lifelongpropertymanagement.com
-            </p>
+            <p style="margin-top: 16px; color: #999; font-size: 12px;">Sent from lifelongpropertymanagement.com</p>
           </div>
         </div>
       `,
     });
 
-    // Auto-reply to the person who submitted
+    // Send auto-reply
     await resend.emails.send({
       from: 'Life Long Property Management <onboarding@resend.dev>',
       to: [email],
@@ -66,17 +122,18 @@ export async function POST(req: NextRequest) {
               <li style="padding: 4px 0;">✉️ <strong>pm@lifelong.com</strong></li>
               <li style="padding: 4px 0;">📍 <strong>5716 Hwy 290 West #200, Austin, TX 78735</strong></li>
             </ul>
-            <p style="color: #999; font-size: 12px; margin-top: 24px;">
-              Life Long Property Management | lifelongpropertymanagement.com
-            </p>
+            <p style="color: #999; font-size: 12px; margin-top: 24px;">Life Long Property Management | lifelongpropertymanagement.com</p>
           </div>
         </div>
       `,
     });
 
+    // Create HubSpot contact
+    await createHubSpotContact({ name, email, phone, subject, message });
+
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Email error:', error);
-    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+    console.error('Error:', error);
+    return NextResponse.json({ error: 'Failed to process submission' }, { status: 500 });
   }
 }
