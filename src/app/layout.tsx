@@ -6,6 +6,10 @@ import Footer from "./components/Footer";
 export const metadata: Metadata = {
   title: "Life Long Property Management",
   description: "Commercial property management and leasing in Central Texas",
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
