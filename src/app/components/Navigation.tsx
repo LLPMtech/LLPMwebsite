@@ -10,15 +10,15 @@ export default function Navigation() {
   return (
     <nav className="bg-white text-navy sticky top-0 z-50 shadow-lg border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
               src="/logo.png"
               alt="LLPM Logo"
-              width={120}
-              height={60}
-              className="h-12 w-auto"
+              width={180}
+              height={72}
+              className="h-18 w-auto"
             />
           </Link>
 
