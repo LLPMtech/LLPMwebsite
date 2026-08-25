@@ -115,34 +115,6 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Team */}
-          <div className="mb-20">
-            <h2 className="text-3xl font-bold text-navy mb-10 text-center">Our Team</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
-              <div className="border-2 border-rust-orange rounded-xl p-8 text-center">
-                <h3 className="text-xl font-bold text-navy mb-1">Norman Phillips</h3>
-                <p className="text-rust-orange font-medium mb-4">Property Manager</p>
-                <a href="tel:5125434686" className="block text-gray-600 hover:text-navy transition text-sm mb-1">
-                  512-543-4686
-                </a>
-                <a href="mailto:norman@hawkinsfamilypartners.com" className="block text-gray-600 hover:text-navy transition text-sm">
-                  norman@hawkinsfamilypartners.com
-                </a>
-              </div>
-
-              <div className="border-2 border-rust-orange rounded-xl p-8 text-center">
-                <h3 className="text-xl font-bold text-navy mb-1">Lindsey Williams</h3>
-                <p className="text-rust-orange font-medium mb-4">Property Manager</p>
-                <a href="tel:5126689459" className="block text-gray-600 hover:text-navy transition text-sm mb-1">
-                  512-668-9459
-                </a>
-                <a href="mailto:lindsey@lifelongpropertymanagement.com" className="block text-gray-600 hover:text-navy transition text-sm">
-                  lindsey@lifelongpropertymanagement.com
-                </a>
-              </div>
-            </div>
-          </div>
-
           {/* Acquisition CTA */}
           <div className="bg-gradient-to-r from-gold to-rust-orange rounded-2xl p-12 text-center">
             <h2 className="text-3xl font-bold text-navy mb-4">Have a Property Worth Considering?</h2>
