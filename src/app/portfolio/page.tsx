@@ -12,7 +12,6 @@ interface Property {
 }
 
 const properties: Property[] = [
-  { name: '101 Caribbean Drive', address: '101 Caribbean Drive', city: 'Corpus Christi', state: 'TX' },
   { name: '11183 Circle Dr.', address: '11183 Circle Dr.', city: 'Austin', state: 'TX', image: '/11183 Circle Dr.JPG' },
   { name: '11701 Old FM 2243 West', address: '11701 Old FM 2243 West', city: 'Leander', state: 'TX' },
   { name: '12705 Hwy 29 W', address: '12705 Hwy 29 W', city: 'Liberty Hill', state: 'TX' },
