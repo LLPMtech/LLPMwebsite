@@ -24,7 +24,7 @@ const properties: Property[] = [
   { name: '2010 E Oltorf St', address: '2010 E Oltorf St', city: 'Austin', state: 'TX', image: '/2010 E Oltorf.jpg' },
   { name: '2019 Clovis Barker Road', address: '2019 Clovis Barker Road', city: 'San Marcos', state: 'TX' },
   { name: '2100 Roselea Dr', address: '2100 Roselea Dr', city: 'Buchanan Dam', state: 'TX' },
-  { name: '21730 County Rd 501', address: '21730 County Rd 501', city: 'Bayfield', state: 'CO' },
+  { name: 'Elk Point Lodge', address: '21730 County Rd 501', city: 'Bayfield', state: 'CO' },
   { name: '2201 Lake Austin Blvd.', address: '2201 Lake Austin Blvd.', city: 'Austin', state: 'TX', image: '/2201 Lake Austin Blvd.jpg' },
   { name: '2410 Hunter Road', address: '2410 Hunter Road', city: 'San Marcos', state: 'TX' },
   { name: '2424 S Congress', address: '2424 S Congress', city: 'Austin', state: 'TX', image: '/2424 S Congress.jpg' },
