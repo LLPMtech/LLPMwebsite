@@ -34,6 +34,7 @@ async function createHubSpotContact(data: {
   });
 
   const contact = await contactRes.json();
+  console.log('HubSpot contact response:', JSON.stringify(contact));
   const contactId = contact.id;
 
   if (!contactId) return;
