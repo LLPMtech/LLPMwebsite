@@ -199,7 +199,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <p className="text-lg mb-2">Monday - Friday</p>
-              <p className="text-2xl font-bold text-gold">8:00 AM - 5:00 PM</p>
+              <p className="text-2xl font-bold text-gold">9:00 AM - 5:00 PM</p>
             </div>
             <div>
               <p className="text-lg mb-2">Saturday & Sunday</p>
