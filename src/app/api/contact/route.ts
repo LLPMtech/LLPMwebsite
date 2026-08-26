@@ -27,8 +27,8 @@ async function createHubSpotContact(data: {
         lastname,
         email: data.email,
         phone: data.phone || '',
-        lead_source: 'Website Contact Form',
         hs_lead_status: 'NEW',
+        message: data.message,
       },
     }),
   });
