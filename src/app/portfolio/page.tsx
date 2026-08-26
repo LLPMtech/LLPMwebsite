@@ -37,7 +37,6 @@ const properties: Property[] = [
   { name: '3701 Drossett Drive', address: '3701 Drossett Drive', city: 'Austin', state: 'TX', image: '/3701 Drossett.jpg' },
   { name: '3900 S FM 620', address: '3900 S FM 620', city: 'Bee Caves', state: 'TX' },
   { name: '4005 Reynosa Dr', address: '4005 Reynosa Dr', city: 'Austin', state: 'TX', image: '/4005 Reynosa.jpeg' },
-  { name: '4226 Laguna Shores', address: '4226 Laguna Shores', city: 'Corpus Christi', state: 'TX' },
   { name: '4234 Laguna Shores (Event Center & Parking Lot)', address: '4234 Laguna Shores', city: 'Corpus Christi', state: 'TX' },
   { name: '4242 Laguna Shores', address: '4242 Laguna Shores', city: 'Corpus Christi', state: 'TX' },
   { name: '4345 West Post Rd Bldg 10', address: '4345 West Post Rd Bldg 10', city: 'Las Vegas', state: 'NV' },
