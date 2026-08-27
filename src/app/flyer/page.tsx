@@ -296,14 +296,12 @@ ${photo
               <p className="text-gray-500 text-sm mb-4">
                 Fill in the fields on the left, then click the button below. A print dialog will open — choose <strong>Save as PDF</strong> to download your flyer.
               </p>
-              <div className="bg-blue-50 border border-blue-100 rounded p-3 text-xs text-gray-600 mb-4">
-                <strong>Tips:</strong>
-                <ul className="mt-1 space-y-1 list-disc list-inside">
-                  <li>Only required fields (*) are needed to generate</li>
-                  <li>Enter one highlight per line in the Highlights box</li>
-                  <li>In the print dialog, set paper size to Letter, margins to None</li>
-                  <li>Check "Background graphics" in print settings for colors</li>
-                </ul>
+              <div className="bg-yellow-50 border border-yellow-200 rounded p-3 text-xs text-gray-700 mb-4 space-y-1">
+                <p className="font-bold text-yellow-800">⚠️ Important print settings:</p>
+                <p>• In the print dialog, check <strong>"Background graphics"</strong> or colors won't show</p>
+                <p>• Set <strong>Margins: None</strong></p>
+                <p>• Set <strong>Paper: Letter</strong></p>
+                <p>• Destination: <strong>Save as PDF</strong></p>
               </div>
               <button
                 onClick={generatePDF}
