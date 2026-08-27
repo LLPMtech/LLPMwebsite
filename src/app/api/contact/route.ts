@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
 
     // Send email via Resend
     await resend.emails.send({
-      from: 'LLPM Website <onboarding@resend.dev>',
+      from: 'LLPM Website <noreply@lifelongpropertymanagement.com>',
       to: ['pm@lifelongpm.com'],
       cc: ['lindsey@lifelongpropertymanagement.com'],
       subject: `New Contact Form Submission: ${subject}`,
@@ -108,7 +108,7 @@ export async function POST(req: NextRequest) {
 
     // Send auto-reply
     await resend.emails.send({
-      from: 'Life Long Property Management <onboarding@resend.dev>',
+      from: 'Life Long Property Management <noreply@lifelongpropertymanagement.com>',
       to: [email],
       subject: 'We received your message — Life Long Property Management',
       html: `
