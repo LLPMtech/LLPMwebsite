@@ -83,8 +83,8 @@ export default function ContactPage() {
               <a href="tel:5125434686" className="text-lg font-bold text-navy hover:text-rust-orange transition block mb-2">
                 512-543-4686
               </a>
-              <a href="mailto:norman@hawkinsfamilypartners.com" className="text-sm text-gray-600 hover:text-rust-orange transition block">
-                norman@hawkinsfamilypartners.com
+              <a href="mailto:norman@lifelongpm.com" className="text-sm text-gray-600 hover:text-rust-orange transition block">
+                norman@lifelongpm.com
               </a>
             </div>
 
@@ -95,8 +95,8 @@ export default function ContactPage() {
               <a href="tel:5126689459" className="text-lg font-bold text-navy hover:text-rust-orange transition block mb-2">
                 512-668-9459
               </a>
-              <a href="mailto:lindsey@lifelongpropertymanagement.com" className="text-sm text-gray-600 hover:text-rust-orange transition block">
-                lindsey@lifelongpropertymanagement.com
+              <a href="mailto:lindsey@lifelongpm.com" className="text-sm text-gray-600 hover:text-rust-orange transition block">
+                lindsey@lifelongpm.com
               </a>
             </div>
           </div>

@@ -72,7 +72,7 @@ const sections = [
         howToUpdate: [
           'No action needed — fully automated',
           'Check HubSpot → Contacts for new submissions',
-          'Form submissions also CC\'d to lindsey@lifelongpropertymanagement.com',
+          'Form submissions also CC\'d to lindsey@lifelongpm.com',
         ],
       },
       {
@@ -174,7 +174,7 @@ const sections = [
         owner: 'Lindsey',
         description: 'Where the website code and files live. Used to update the site, upload photos, and update the vacancy CSV.',
         howToUpdate: [
-          'Account: LLPMtech (lindsey@lifelongpropertymanagement.com)',
+          'Account: LLPMtech (lindsey@lifelongpm.com)',
           'To upload files: go to the repo → public/ folder → Add file → Upload files',
           'Direct code edits: click any file → pencil icon → edit → commit changes',
         ],
@@ -207,7 +207,7 @@ const sections = [
         owner: 'Lindsey',
         description: 'Sends contact form notification emails and auto-replies to prospects.',
         howToUpdate: [
-          'Account: lindsey@lifelongpropertymanagement.com',
+          'Account: lindsey@lifelongpm.com',
           'API key stored in Vercel environment variables',
           'Domain verification pending (waiting on GoDaddy/Cloudflare)',
         ],
@@ -218,7 +218,7 @@ const sections = [
         owner: 'Lindsey',
         description: 'Manages DNS for lifelongpropertymanagement.com. Nameservers still pointing to Wix/GoDaddy — pending resolution.',
         howToUpdate: [
-          'Account: lindsey@lifelongpropertymanagement.com',
+          'Account: lindsey@lifelongpm.com',
           'Action needed: log into GoDaddy and switch nameservers to aitana.ns.cloudflare.com and javier.ns.cloudflare.com',
           'Once complete: verify Resend domain and Google Search Console',
         ],
@@ -387,7 +387,7 @@ export default function DocsPage() {
       <section className="bg-navy text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-gray-300 text-sm">
-            Questions or changes needed? Contact Lindsey Williams · lindsey@lifelongpropertymanagement.com · 512-668-9459
+            Questions or changes needed? Contact Lindsey Williams · lindsey@lifelongpm.com · 512-668-9459
           </p>
           <p className="text-gray-500 text-xs mt-2">LLPM Internal Documentation · Not for public distribution</p>
         </div>

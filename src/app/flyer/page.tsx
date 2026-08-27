@@ -24,7 +24,7 @@ const FIELDS = [
   { id: 'contactName', label: 'Contact Name', placeholder: 'Norman Phillips', required: true },
   { id: 'contactTitle', label: 'Contact Title', placeholder: 'Property Manager', required: false },
   { id: 'contactPhone', label: 'Contact Phone', placeholder: '(512) 543-4686', required: false },
-  { id: 'contactEmail', label: 'Contact Email', placeholder: 'norman@hawkinsfamilypartners.com', required: false },
+  { id: 'contactEmail', label: 'Contact Email', placeholder: 'norman@lifelongpm.com', required: false },
 ];
 
 type FormData = Record<string, string>;

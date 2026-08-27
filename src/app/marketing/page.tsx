@@ -145,7 +145,7 @@ export default function MarketingPage() {
         <div className="bg-navy rounded-lg p-8 text-center text-white">
           <h2 className="text-2xl font-bold mb-4">Need Something Else?</h2>
           <p className="text-gray-300 mb-6">Request a new marketing tool or report a problem.</p>
-          <a href="mailto:lindsey@lifelongpropertymanagement.com?subject=Marketing Request"
+          <a href="mailto:lindsey@lifelongpm.com?subject=Marketing Request"
             className="inline-block bg-gold text-navy px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition">
             Contact Lindsey
           </a>

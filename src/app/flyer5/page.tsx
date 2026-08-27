@@ -513,7 +513,7 @@ export default function Flyer5Page() {
                 <Field id="contactName" label="Contact Name" placeholder="Norman Phillips" required />
                 <Field id="contactTitle" label="Title" placeholder="Property Manager" />
                 <Field id="contactPhone" label="Phone" placeholder="(512) 543-4686" />
-                <Field id="contactEmail" label="Email" placeholder="norman@hawkinsfamilypartners.com" />
+                <Field id="contactEmail" label="Email" placeholder="norman@lifelongpm.com" />
               </div>
             </div>
 
