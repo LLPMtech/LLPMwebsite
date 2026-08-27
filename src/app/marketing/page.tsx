@@ -62,6 +62,22 @@ export default function MarketingPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
 
+        {/* Flyer Generator CTA */}
+        <div className="bg-gradient-to-r from-navy to-rust-orange rounded-lg p-8 text-white">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <h2 className="text-2xl font-bold mb-2">🚀 Flyer Generator</h2>
+              <p className="text-gray-200">Fill out a form and generate a ready-to-print PDF flyer — no PowerPoint needed. Upload your photos, enter property details, click generate.</p>
+            </div>
+            <a
+              href="/flyer"
+              className="flex-shrink-0 bg-gold text-navy px-8 py-3 rounded-lg font-bold text-lg hover:bg-opacity-90 transition"
+            >
+              Generate a Flyer →
+            </a>
+          </div>
+        </div>
+
         {/* Templates */}
         <div>
           <h2 className="text-2xl font-bold text-navy mb-6">📄 Available Templates</h2>

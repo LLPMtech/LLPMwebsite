@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const INTERNAL_ROUTES = ['/vacancy', '/move-in', '/move-out', '/docs', '/marketing'];
+const INTERNAL_ROUTES = ['/vacancy', '/move-in', '/move-out', '/docs', '/marketing', '/flyer'];
 const PASSWORD = '@internal!llpm1';
 const COOKIE_NAME = 'llpm_internal_auth';
 
@@ -120,5 +120,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/vacancy/:path*', '/move-in/:path*', '/move-out/:path*', '/docs/:path*', '/marketing/:path*'],
+  matcher: ['/vacancy/:path*', '/move-in/:path*', '/move-out/:path*', '/docs/:path*', '/marketing/:path*', '/flyer/:path*'],
 };
