@@ -8,7 +8,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white text-navy sticky top-0 z-50 shadow-lg border-b border-gray-100">
+    <nav style={{background: 'linear-gradient(to right, #ffffff 0%, #ffffff 25%, #1F3A5F 55%, #1F3A5F 100%)'}} className="sticky top-0 z-50 shadow-lg border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-1">
           {/* Logo */}
@@ -24,25 +24,25 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <Link href="/" className="text-navy hover:text-rust-orange transition font-medium">
+            <Link href="/" className="text-white hover:text-gold transition font-medium">
               Home
             </Link>
-            <Link href="/about" className="text-navy hover:text-rust-orange transition font-medium">
+            <Link href="/about" className="text-white hover:text-gold transition font-medium">
               About
             </Link>
-            <Link href="/portfolio" className="text-navy hover:text-rust-orange transition font-medium">
+            <Link href="/portfolio" className="text-white hover:text-gold transition font-medium">
               Portfolio
             </Link>
-            <Link href="/properties" className="text-navy hover:text-rust-orange transition font-medium">
+            <Link href="/properties" className="text-white hover:text-gold transition font-medium">
               Properties
             </Link>
-            <Link href="/tenant-portal" className="text-navy hover:text-rust-orange transition font-medium">
+            <Link href="/tenant-portal" className="text-white hover:text-gold transition font-medium">
               Tenant Portal
             </Link>
-            <Link href="/apply" className="text-navy hover:text-rust-orange transition font-medium">
+            <Link href="/apply" className="text-white hover:text-gold transition font-medium">
               Apply
             </Link>
-            <Link href="/contact" className="text-navy hover:text-rust-orange transition font-medium">
+            <Link href="/contact" className="text-white hover:text-gold transition font-medium">
               Contact
             </Link>
           </div>
@@ -50,7 +50,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-navy hover:bg-gray-100 focus:outline-none"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-navy focus:outline-none"
           >
             <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
