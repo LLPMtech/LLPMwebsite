@@ -69,8 +69,12 @@ export default function Flyer5Page() {
     setDriveTimes(prev => prev.map((d, idx) => idx === i ? { ...d, [field]: val } : d));
   };
 
-  const generate = () => {
+  const generate = async () => {
     setGenerating(true);
+
+    // Fetch logo as base64 so it renders in the print window
+    const logoRes = await fetch('/api/logo');
+    const { logo } = await logoRes.json();
 
     const highlights = (form.highlights || '').split('\n').filter(Boolean);
     const activeDrives = driveTimes.filter(d => d.mins && d.dest);
@@ -83,7 +87,7 @@ export default function Flyer5Page() {
 
     const header = (tabLabel: string) => `
       <div style="background:#1F3A5F;padding:10px 20px;display:flex;align-items:center;gap:14px;">
-        <img src="/logo.png" style="height:48px;width:auto;" />
+        <img src="${logo}" style="height:48px;width:auto;" />
         <div style="flex:1;color:#9CA3AF;font-size:8px;text-align:center;font-weight:bold;">
           ${form.address || ''} · ${form.city || ''}, TX ${form.zip || ''}
         </div>
@@ -121,7 +125,7 @@ export default function Flyer5Page() {
     const p1 = `
       <div class="page">
         <div style="background:#1F3A5F;padding:16px 20px;display:flex;align-items:center;gap:16px;">
-          <img src="/logo.png" style="height:64px;width:auto;" />
+          <img src="${logo}" style="height:64px;width:auto;" />
           <div style="flex:1;">
             <div style="color:#F5A623;font-size:8px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Commercial Property — ${form.status || 'For Lease'}</div>
             <div style="color:white;font-size:26px;font-weight:bold;line-height:1.1;">${form.propertyName || '[Property Name]'}</div>
@@ -322,7 +326,7 @@ export default function Flyer5Page() {
           <div style="font-size:12px;font-weight:bold;color:white;margin-top:4px;">${form.city || '[CITY]'}, TX · ${form.size || '[SIZE]'} · ${(form.status || 'FOR LEASE').toUpperCase()}</div>
         </div>
         <div style="background:#111827;padding:14px 20px;display:flex;align-items:center;gap:16px;flex:1;">
-          <img src="/logo.png" style="height:56px;width:auto;" />
+          <img src="${logo}" style="height:56px;width:auto;" />
           <div style="flex:1;">
             <div style="color:white;font-size:13px;font-weight:bold;">${form.contactName || 'Life Long Property Management'}</div>
             <div style="color:#9CA3AF;font-size:9px;margin-top:2px;">${form.contactTitle || ''}</div>

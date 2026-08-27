@@ -56,6 +56,10 @@ export default function FlyerPage() {
   const generatePDF = async () => {
     setGenerating(true);
 
+    // Fetch logo as base64 so it renders in the print window
+    const logoRes = await fetch('/api/logo');
+    const { logo } = await logoRes.json();
+
     const highlights = (form.highlights || '').split('\n').filter(Boolean);
 
     const html = `
@@ -107,7 +111,7 @@ export default function FlyerPage() {
 <body>
 
 <div class="header">
-  <img src="/logo.png" />
+  <img src="${logo}" />
   <div class="header-text">
     <div class="header-label">Available — ${form.status || 'For Lease'}</div>
     <div class="header-name">${form.propertyName || '[Property Name]'}</div>
@@ -167,7 +171,7 @@ ${photo
 </div>
 
 <div class="footer">
-  <img src="/logo.png" />
+  <img src="${logo}" />
   <div class="footer-contact">
     <div class="footer-name">${form.contactName || 'Life Long Property Management'} ${form.contactTitle ? '· ' + form.contactTitle : ''}</div>
     <div class="footer-info">${[form.contactPhone, form.contactEmail].filter(Boolean).join('  ·  ')}</div>
