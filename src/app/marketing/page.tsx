@@ -20,6 +20,15 @@ const templates: Template[] = [
     use: 'LoopNet, Email, Print',
     updatedDate: 'August 2026',
   },
+  {
+    name: 'Listing Flyer — One Page',
+    description: 'Single-slide high-impact flyer with navy left panel, property name, key stats, two photo placeholders, property highlights, and contact footer. Perfect for quick email sends.',
+    file: '/templates/LLPM_OnePager_Template.pptx',
+    fileType: 'PPTX',
+    pages: '1 slide',
+    use: 'Email, LoopNet, Print',
+    updatedDate: 'August 2026',
+  },
 ];
 
 const guidelines = [
@@ -83,14 +92,7 @@ export default function MarketingPage() {
               </div>
             ))}
 
-            {/* Coming soon placeholder */}
-            <div className="bg-white rounded-lg shadow overflow-hidden border-2 border-dashed border-gray-200">
-              <div className="p-6 flex flex-col items-center justify-center text-center h-full min-h-48">
-                <div className="text-4xl mb-3">🔜</div>
-                <h3 className="text-lg font-bold text-gray-400 mb-2">Single-Page Flyer</h3>
-                <p className="text-gray-400 text-sm">One-page high-impact listing flyer. Coming soon.</p>
-              </div>
-            </div>
+            {/* end templates */}
           </div>
         </div>
 
