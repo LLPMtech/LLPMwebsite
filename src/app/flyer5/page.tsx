@@ -105,20 +105,21 @@ export default function Flyer5Page() {
       </div>`;
 
     const css = `
-      * { margin:0; padding:0; box-sizing:border-box; }
+      * { margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; color-adjust:exact !important; }
       body { font-family:Arial,sans-serif; background:white; }
       .page { width:10in; min-height:7.5in; page-break-after:always; display:flex; flex-direction:column; }
       .page:last-child { page-break-after:auto; }
       .body { padding:14px 20px; flex:1; }
-      .section-title { font-size:8.5px;font-weight:bold;color:#1F3A5F;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px; }
+      .section-title { font-size:8.5px;font-weight:bold;color:#1F3A5F !important;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px; }
       table { width:100%;border-collapse:collapse;font-size:8px; }
-      tr:nth-child(odd) td { background:#F4F5F7; }
+      tr:nth-child(odd) td { background:#F4F5F7 !important; }
       td { padding:4px 8px; }
-      td:first-child { font-weight:bold;color:#1F3A5F;width:32%; }
-      td:last-child { color:#4B5563; }
+      td:first-child { font-weight:bold;color:#1F3A5F !important;width:32%; }
+      td:last-child { color:#4B5563 !important; }
       .two-col { display:grid;grid-template-columns:1fr 1fr;gap:14px; }
       .three-col { display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px; }
-      .badge { display:inline-block;background:#C85A17;color:white;font-size:7px;font-weight:bold;padding:3px 10px;border-radius:2px;margin-right:6px; }
+      .badge { display:inline-block;background:#C85A17 !important;color:white !important;font-size:7px;font-weight:bold;padding:3px 10px;border-radius:2px;margin-right:6px; }
+      @media print { @page { size:10in 7.5in landscape; margin:0; } }
     `;
 
     // PAGE 1 — COVER
