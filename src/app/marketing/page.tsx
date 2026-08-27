@@ -29,6 +29,8 @@ const templates: Template[] = [
     use: 'Email, Print, LoopNet',
     updatedDate: 'August 2026',
   },
+  {
+    name: 'Listing Flyer — One Page (Landscape)',
     description: 'Single-slide high-impact flyer with navy left panel, property name, key stats, two photo placeholders, property highlights, and contact footer. Perfect for quick email sends.',
     file: '/templates/LLPM_OnePager_Template.pptx',
     fileType: 'PPTX',
