@@ -306,6 +306,7 @@ export default function DocsPage() {
               { label: 'Vacancy Report', url: '/vacancy', color: 'bg-navy' },
               { label: 'Move-In Checklist', url: '/move-in', color: 'bg-gold' },
               { label: 'Move-Out Checklist', url: '/move-out', color: 'bg-rust-orange' },
+              { label: 'Lead Management SOP', url: '/sop', color: 'bg-rust-orange' },
               { label: 'Marketing Templates', url: '/marketing', color: 'bg-navy' },
               { label: 'HubSpot', url: 'https://app.hubspot.com', color: 'bg-orange-500' },
               { label: 'GitHub', url: 'https://github.com/LLPMtech/LLPMwebsite', color: 'bg-gray-800' },
