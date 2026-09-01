@@ -45,6 +45,9 @@ export default function Navigation() {
             <Link href="/contact" className="text-white hover:text-gold transition font-medium">
               Contact
             </Link>
+            <Link href="/inspection" className="text-white hover:text-gold transition font-medium">
+              Inspection
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -93,6 +96,13 @@ export default function Navigation() {
               onClick={() => setIsOpen(false)}
             >
               Contact
+            </Link>
+            <Link
+              href="/inspection"
+              className="block px-3 py-2 rounded text-navy hover:bg-gray-100 font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Inspection
             </Link>
           </div>
         )}
