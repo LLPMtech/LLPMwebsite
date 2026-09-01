@@ -45,7 +45,6 @@ export default function PropertyInspectionPage() {
   });
 
   const fileRefs = useRef<(HTMLInputElement | null)[]>([]);
-  const reportRef = useRef<HTMLDivElement>(null);
 
   const handlePhotoUpload = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.[0]) {
@@ -60,57 +59,88 @@ export default function PropertyInspectionPage() {
   };
 
   const downloadPDF = () => {
-    if (!reportRef.current) return;
-    
-    const printWindow = window.open('', '', 'width=800,height=600');
+    const printWindow = window.open('', '', 'width=900,height=1200');
     if (!printWindow) return;
     
-    const content = reportRef.current.innerHTML;
+    const photoHTML = data.photos.map((photo, i) => 
+      photo ? `<div style="margin: 10px 0;"><img src="${photo}" style="max-width: 100%; height: auto; border: 1px solid #ccc;"/></div>` : ''
+    ).join('');
+    
     printWindow.document.write(`
       <html>
         <head>
           <title>${data.propertyName || 'Inspection'}</title>
           <style>
-            body { font-family: Arial, sans-serif; padding: 20px; }
-            .header { text-align: center; margin-bottom: 20px; }
-            .property-info { margin-bottom: 20px; }
-            .section { margin-bottom: 20px; }
-            .condition { margin-bottom: 15px; padding: 10px; border-left: 3px solid #ccc; }
-            .good { border-left-color: #22c55e; }
-            .fair { border-left-color: #eab308; }
-            .needs { border-left-color: #f97316; }
-            .poor { border-left-color: #ef4444; }
-            .na { border-left-color: #9ca3af; }
+            body { font-family: Arial, sans-serif; padding: 20px; max-width: 8.5in; margin: 0 auto; }
+            h1 { text-align: center; color: #2c3e50; margin-bottom: 5px; font-size: 20px; }
+            h2 { text-align: center; color: #2c3e50; margin-bottom: 15px; font-size: 16px; }
+            .property-info { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #2c3e50; }
+            .property-info p { margin: 5px 0; font-size: 13px; }
+            .photos-section { margin-bottom: 20px; page-break-inside: avoid; }
+            .photos-section h3 { color: #2c3e50; font-size: 13px; margin-bottom: 10px; border-bottom: 1px solid #ddd; }
+            .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+            .photo-grid img { max-width: 100%; border: 1px solid #ccc; }
+            .conditions-section { margin-bottom: 20px; }
+            .conditions-section h3 { color: #2c3e50; font-size: 13px; margin-bottom: 10px; border-bottom: 1px solid #ddd; }
+            .condition { margin-bottom: 12px; padding: 8px; background: #f9f9f9; border-left: 3px solid #ccc; }
+            .condition strong { display: block; color: #2c3e50; }
+            .condition p { margin: 3px 0; font-size: 12px; }
+            .maintenance { margin-top: 20px; }
+            .maintenance h3 { color: #2c3e50; font-size: 13px; margin-bottom: 10px; border-bottom: 1px solid #ddd; }
+            .maintenance p { font-size: 12px; white-space: pre-wrap; }
+            @media print { body { padding: 10px; } }
           </style>
         </head>
         <body>
-          <div class="header">
-            <h1>LIFE LONG PROPERTY MANAGEMENT</h1>
-            <h2>Property Inspection Report</h2>
-          </div>
+          <h1>LIFE LONG PROPERTY MANAGEMENT</h1>
+          <h2>Property Inspection Report</h2>
+          
           <div class="property-info">
             <p><strong>Property:</strong> ${data.propertyName || 'N/A'}</p>
             <p><strong>Address:</strong> ${data.address || 'N/A'}</p>
             <p><strong>Date:</strong> ${data.dateVisited} | <strong>Inspector:</strong> ${data.inspector || 'N/A'}</p>
           </div>
-          <div class="section">
+
+          ${data.photos.some(p => p) ? `
+            <div class="photos-section">
+              <h3>Exterior Photos</h3>
+              <div class="photo-grid">
+                ${data.photos.map((photo, i) => photo ? `<img src="${photo}" alt="Photo ${i+1}"/>` : '').join('')}
+              </div>
+            </div>
+          ` : ''}
+
+          <div class="conditions-section">
             <h3>Condition Assessment</h3>
-            ${Object.entries(data.conditions).map(([key, cond]) => `
-              <div class="condition ${cond.rating.toLowerCase().replace(' ', '')}">
-                <strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${cond.rating || 'Not rated'}
-                ${cond.notes ? `<p>${cond.notes}</p>` : ''}
+            ${[
+              { key: 'roof', label: 'Roof' },
+              { key: 'facade', label: 'Facade & Exterior Walls' },
+              { key: 'windows', label: 'Windows & Doors' },
+              { key: 'paving', label: 'Paving & Pavement' },
+              { key: 'parking', label: 'Parking Lot Condition' },
+              { key: 'landscaping', label: 'Landscaping & Grounds' },
+              { key: 'signage', label: 'Signage Condition' },
+              { key: 'lighting', label: 'Lighting & Security' },
+              { key: 'hvac', label: 'HVAC & Mechanical (External)' },
+              { key: 'drainage', label: 'Drainage & Gutters' },
+              { key: 'fencing', label: 'Fencing & Gates' },
+            ].map(area => `
+              <div class="condition">
+                <strong>${area.label}: ${data.conditions[area.key].rating || 'Not rated'}</strong>
+                ${data.conditions[area.key].notes ? `<p>${data.conditions[area.key].notes}</p>` : ''}
               </div>
             `).join('')}
           </div>
+
           ${data.maintenanceItems ? `
-            <div class="section">
-              <h3>Priority Maintenance</h3>
-              <p>${data.maintenanceItems.replace(/\n/g, '<br>')}</p>
+            <div class="maintenance">
+              <h3>Priority Maintenance Items</h3>
+              <p>${data.maintenanceItems}</p>
             </div>
           ` : ''}
+
           <script>
-            window.print();
-            setTimeout(() => window.close(), 500);
+            setTimeout(() => { window.print(); }, 500);
           </script>
         </body>
       </html>
@@ -195,13 +225,18 @@ export default function PropertyInspectionPage() {
         {/* Preview - Right */}
         <div className="bg-white rounded shadow p-4 sticky top-4 h-fit">
           <h2 className="font-bold text-navy mb-3">Preview</h2>
-          <div ref={reportRef} className="text-xs bg-gray-50 p-3 rounded mb-3 max-h-96 overflow-y-auto border">
+          <div className="text-xs bg-gray-50 p-3 rounded mb-3 max-h-96 overflow-y-auto border">
             <div className="font-bold text-center mb-2">LLPM INSPECTION</div>
             <div className="mb-2 text-xs">
               <div><strong>Property:</strong> {data.propertyName || 'N/A'}</div>
               <div><strong>Address:</strong> {data.address || 'N/A'}</div>
               <div><strong>Date:</strong> {data.dateVisited}</div>
             </div>
+            {data.photos.some(p => p) && (
+              <div className="mb-2">
+                <strong className="text-xs">Photos uploaded: {data.photos.filter(p => p).length}</strong>
+              </div>
+            )}
             {conditionAreas.map(a => (
               <div key={a.key} className="text-xs mb-1">
                 <strong>{a.label}:</strong> {data.conditions[a.key].rating || '-'}
