@@ -21,24 +21,6 @@ interface InspectionData {
   maintenanceItems: string;
 }
 
-const ratingColors: Record<ConditionRating, string> = {
-  'Good': 'bg-green-100 border-green-300 text-green-900',
-  'Fair': 'bg-yellow-100 border-yellow-300 text-yellow-900',
-  'Poor': 'bg-red-100 border-red-300 text-red-900',
-  'Needs Work': 'bg-orange-100 border-orange-300 text-orange-900',
-  'N/A': 'bg-gray-100 border-gray-300 text-gray-600',
-  '': 'bg-white border-gray-300 text-gray-600',
-};
-
-const ratingBgColors: Record<ConditionRating, string> = {
-  'Good': 'bg-green-50',
-  'Fair': 'bg-yellow-50',
-  'Poor': 'bg-red-50',
-  'Needs Work': 'bg-orange-50',
-  'N/A': 'bg-gray-50',
-  '': 'bg-white',
-};
-
 export default function PropertyInspectionPage() {
   const [data, setData] = useState<InspectionData>({
     propertyName: '',
@@ -62,7 +44,7 @@ export default function PropertyInspectionPage() {
     maintenanceItems: '',
   });
 
-  const fileRefs = [useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null)];
+  const fileRefs = useRef<(HTMLInputElement | null)[]>([]);
   const reportRef = useRef<HTMLDivElement>(null);
 
   const handlePhotoUpload = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,26 +59,63 @@ export default function PropertyInspectionPage() {
     }
   };
 
-  const generatePDF = () => {
-    const element = reportRef.current;
-    if (!element) return;
-
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-    script.onload = () => {
-      const html2pdf = (window as any).html2pdf;
-      html2pdf()
-        .set({
-          margin: 10,
-          filename: `${data.propertyName || 'inspection'}_${data.dateVisited}.pdf`,
-          image: { type: 'jpeg', quality: 0.98 },
-          html2canvas: { scale: 2 },
-          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        })
-        .from(element)
-        .save();
-    };
-    document.head.appendChild(script);
+  const downloadPDF = () => {
+    if (!reportRef.current) return;
+    
+    const printWindow = window.open('', '', 'width=800,height=600');
+    if (!printWindow) return;
+    
+    const content = reportRef.current.innerHTML;
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>${data.propertyName || 'Inspection'}</title>
+          <style>
+            body { font-family: Arial, sans-serif; padding: 20px; }
+            .header { text-align: center; margin-bottom: 20px; }
+            .property-info { margin-bottom: 20px; }
+            .section { margin-bottom: 20px; }
+            .condition { margin-bottom: 15px; padding: 10px; border-left: 3px solid #ccc; }
+            .good { border-left-color: #22c55e; }
+            .fair { border-left-color: #eab308; }
+            .needs { border-left-color: #f97316; }
+            .poor { border-left-color: #ef4444; }
+            .na { border-left-color: #9ca3af; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <h1>LIFE LONG PROPERTY MANAGEMENT</h1>
+            <h2>Property Inspection Report</h2>
+          </div>
+          <div class="property-info">
+            <p><strong>Property:</strong> ${data.propertyName || 'N/A'}</p>
+            <p><strong>Address:</strong> ${data.address || 'N/A'}</p>
+            <p><strong>Date:</strong> ${data.dateVisited} | <strong>Inspector:</strong> ${data.inspector || 'N/A'}</p>
+          </div>
+          <div class="section">
+            <h3>Condition Assessment</h3>
+            ${Object.entries(data.conditions).map(([key, cond]) => `
+              <div class="condition ${cond.rating.toLowerCase().replace(' ', '')}">
+                <strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${cond.rating || 'Not rated'}
+                ${cond.notes ? `<p>${cond.notes}</p>` : ''}
+              </div>
+            `).join('')}
+          </div>
+          ${data.maintenanceItems ? `
+            <div class="section">
+              <h3>Priority Maintenance</h3>
+              <p>${data.maintenanceItems.replace(/\n/g, '<br>')}</p>
+            </div>
+          ` : ''}
+          <script>
+            window.print();
+            setTimeout(() => window.close(), 500);
+          </script>
+        </body>
+      </html>
+    `);
+    printWindow.document.close();
   };
 
   const conditionAreas = [
@@ -116,180 +135,83 @@ export default function PropertyInspectionPage() {
   const ratings: ConditionRating[] = ['Good', 'Fair', 'Needs Work', 'Poor', 'N/A'];
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <h1 className="text-4xl font-bold text-navy mb-2">Property Inspection Report</h1>
-      <p className="text-gray-600 mb-8">Document exterior property conditions with ratings and detailed notes</p>
+    <div className="max-w-6xl mx-auto p-4">
+      <h1 className="text-3xl font-bold text-navy mb-2">Property Inspection Report</h1>
+      <p className="text-gray-600 mb-8">Document exterior property conditions</p>
 
-      <div className="grid grid-cols-4 gap-8">
-        {/* Form */}
-        <div className="col-span-3 space-y-6">
-          {/* Property Details */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-lg font-bold text-navy mb-4">Property Details</h2>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Property Name</label>
-                <input
-                  type="text"
-                  value={data.propertyName}
-                  onChange={e => setData(prev => ({ ...prev, propertyName: e.target.value }))}
-                  placeholder="e.g., Plaza Lofts"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Address</label>
-                <input
-                  type="text"
-                  value={data.address}
-                  onChange={e => setData(prev => ({ ...prev, address: e.target.value }))}
-                  placeholder="Full address"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Date</label>
-                  <input
-                    type="date"
-                    value={data.dateVisited}
-                    onChange={e => setData(prev => ({ ...prev, dateVisited: e.target.value }))}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Inspector</label>
-                  <input
-                    type="text"
-                    value={data.inspector}
-                    onChange={e => setData(prev => ({ ...prev, inspector: e.target.value }))}
-                    placeholder="Your name"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                  />
-                </div>
-              </div>
+      <div className="grid grid-cols-3 gap-6">
+        {/* Form - Left */}
+        <div className="col-span-2 space-y-4">
+          {/* Details */}
+          <div className="bg-white rounded shadow p-4">
+            <h2 className="font-bold text-navy mb-3">Property Details</h2>
+            <input type="text" placeholder="Property Name" value={data.propertyName} onChange={e => setData({...data, propertyName: e.target.value})} className="w-full p-2 border mb-2 rounded" />
+            <input type="text" placeholder="Address" value={data.address} onChange={e => setData({...data, address: e.target.value})} className="w-full p-2 border mb-2 rounded" />
+            <div className="grid grid-cols-2 gap-2">
+              <input type="date" value={data.dateVisited} onChange={e => setData({...data, dateVisited: e.target.value})} className="p-2 border rounded" />
+              <input type="text" placeholder="Inspector" value={data.inspector} onChange={e => setData({...data, inspector: e.target.value})} className="p-2 border rounded" />
             </div>
           </div>
 
           {/* Photos */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-lg font-bold text-navy mb-4">Exterior Photos</h2>
-            <div className="grid grid-cols-2 gap-4">
-              {[1, 2, 3, 4].map((num, idx) => (
-                <button
-                  key={num}
-                  type="button"
-                  onClick={() => fileRefs[idx].current?.click()}
-                  className="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-gold"
-                >
-                  {data.photos[idx] ? (
-                    <div><div className="text-2xl">✓</div><div className="text-sm">Photo {num} uploaded</div></div>
-                  ) : (
-                    <div><div className="text-2xl">📷</div><div className="text-sm">Photo {num}</div></div>
-                  )}
-                  <input
-                    ref={fileRefs[idx]}
-                    type="file"
-                    accept="image/*"
-                    onChange={e => handlePhotoUpload(idx, e)}
-                    className="hidden"
-                  />
+          <div className="bg-white rounded shadow p-4">
+            <h2 className="font-bold text-navy mb-3">Photos</h2>
+            <div className="grid grid-cols-2 gap-2">
+              {[0, 1, 2, 3].map(i => (
+                <button key={i} type="button" onClick={() => fileRefs.current[i]?.click()} className="p-3 border-2 border-dashed rounded hover:border-gold">
+                  {data.photos[i] ? '✓ Uploaded' : `Photo ${i + 1}`}
+                  <input ref={el => {if(el) fileRefs.current[i] = el}} type="file" accept="image/*" onChange={e => handlePhotoUpload(i, e)} className="hidden" />
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Condition Assessment */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-lg font-bold text-navy mb-4">Condition Assessment</h2>
-            <div className="space-y-4">
+          {/* Conditions */}
+          <div className="bg-white rounded shadow p-4">
+            <h2 className="font-bold text-navy mb-3">Condition Assessment</h2>
+            <div className="space-y-3">
               {conditionAreas.map(area => (
-                <div key={area.key} className={`p-4 rounded-lg border-2 ${ratingBgColors[data.conditions[area.key].rating]}`}>
-                  <div className="flex justify-between items-start mb-3">
-                    <label className="font-medium">{area.label}</label>
-                    <select
-                      value={data.conditions[area.key].rating}
-                      onChange={e => setData(prev => ({
-                        ...prev,
-                        conditions: {
-                          ...prev.conditions,
-                          [area.key]: { ...prev.conditions[area.key], rating: e.target.value as ConditionRating }
-                        }
-                      }))}
-                      className={`px-2 py-1 rounded border-2 text-sm font-medium ${ratingColors[data.conditions[area.key].rating]}`}
-                    >
+                <div key={area.key}>
+                  <div className="flex justify-between mb-1">
+                    <label className="font-medium text-sm">{area.label}</label>
+                    <select value={data.conditions[area.key].rating} onChange={e => setData({...data, conditions: {...data.conditions, [area.key]: {...data.conditions[area.key], rating: e.target.value as ConditionRating}}})} className="p-1 border rounded text-sm">
                       <option value="">Select</option>
                       {ratings.map(r => <option key={r} value={r}>{r}</option>)}
                     </select>
                   </div>
-                  <textarea
-                    value={data.conditions[area.key].notes}
-                    onChange={e => setData(prev => ({
-                      ...prev,
-                      conditions: { ...prev.conditions, [area.key]: { ...prev.conditions[area.key], notes: e.target.value } }
-                    }))}
-                    placeholder="Notes..."
-                    className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
-                    rows={2}
-                  />
+                  <textarea value={data.conditions[area.key].notes} onChange={e => setData({...data, conditions: {...data.conditions, [area.key]: {...data.conditions[area.key], notes: e.target.value}}})} placeholder="Notes..." className="w-full p-2 border rounded text-xs" rows={2} />
                 </div>
               ))}
             </div>
           </div>
 
           {/* Maintenance */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-lg font-bold text-navy mb-4">Priority Maintenance</h2>
-            <textarea
-              value={data.maintenanceItems}
-              onChange={e => setData(prev => ({ ...prev, maintenanceItems: e.target.value }))}
-              placeholder="Priority items..."
-              className="w-full px-4 py-3 border border-gray-300 rounded"
-              rows={5}
-            />
+          <div className="bg-white rounded shadow p-4">
+            <h2 className="font-bold text-navy mb-3">Priority Maintenance</h2>
+            <textarea value={data.maintenanceItems} onChange={e => setData({...data, maintenanceItems: e.target.value})} placeholder="Priority items..." className="w-full p-2 border rounded" rows={4} />
           </div>
         </div>
 
-        {/* Sidebar */}
-        <div className="space-y-6">
-          {/* Legend */}
-          <div className="bg-white rounded-lg shadow p-6 sticky top-24">
-            <h2 className="text-lg font-bold text-navy mb-4">Legend</h2>
-            <div className="space-y-2">
-              <div className="p-2 rounded bg-green-50 border border-green-300"><div className="font-bold text-sm">Good</div></div>
-              <div className="p-2 rounded bg-yellow-50 border border-yellow-300"><div className="font-bold text-sm">Fair</div></div>
-              <div className="p-2 rounded bg-orange-50 border border-orange-300"><div className="font-bold text-sm">Needs Work</div></div>
-              <div className="p-2 rounded bg-red-50 border border-red-300"><div className="font-bold text-sm">Poor</div></div>
-              <div className="p-2 rounded bg-gray-50 border border-gray-300"><div className="font-bold text-sm">N/A</div></div>
+        {/* Preview - Right */}
+        <div className="bg-white rounded shadow p-4 sticky top-4 h-fit">
+          <h2 className="font-bold text-navy mb-3">Preview</h2>
+          <div ref={reportRef} className="text-xs bg-gray-50 p-3 rounded mb-3 max-h-96 overflow-y-auto border">
+            <div className="font-bold text-center mb-2">LLPM INSPECTION</div>
+            <div className="mb-2 text-xs">
+              <div><strong>Property:</strong> {data.propertyName || 'N/A'}</div>
+              <div><strong>Address:</strong> {data.address || 'N/A'}</div>
+              <div><strong>Date:</strong> {data.dateVisited}</div>
             </div>
-          </div>
-
-          {/* Preview & Download */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-lg font-bold text-navy mb-4">Preview</h2>
-            <div ref={reportRef} className="text-xs p-3 bg-white border border-gray-200 rounded mb-4 max-h-96 overflow-y-auto">
-              <div className="font-bold text-center mb-2">LLPM PROPERTY INSPECTION</div>
-              <div className="text-xs mb-2">
-                <div><strong>Property:</strong> {data.propertyName || 'N/A'}</div>
-                <div><strong>Address:</strong> {data.address || 'N/A'}</div>
-                <div><strong>Date:</strong> {data.dateVisited} | <strong>Inspector:</strong> {data.inspector || 'N/A'}</div>
+            {conditionAreas.map(a => (
+              <div key={a.key} className="text-xs mb-1">
+                <strong>{a.label}:</strong> {data.conditions[a.key].rating || '-'}
+                {data.conditions[a.key].notes && <div className="ml-2 text-gray-600 text-xs">{data.conditions[a.key].notes}</div>}
               </div>
-              {conditionAreas.map(a => (
-                <div key={a.key} className="text-xs mb-1">
-                  <strong>{a.label}:</strong> {data.conditions[a.key].rating || 'Not rated'}
-                  {data.conditions[a.key].notes && <div className="ml-2 text-gray-600">{data.conditions[a.key].notes}</div>}
-                </div>
-              ))}
-            </div>
-
-            <button
-              type="button"
-              onClick={generatePDF}
-              className="w-full bg-gold text-navy py-3 rounded-lg font-bold hover:opacity-90"
-            >
-              Download PDF
-            </button>
+            ))}
           </div>
+          <button type="button" onClick={downloadPDF} className="w-full bg-gold text-navy py-2 rounded font-bold">
+            Download PDF
+          </button>
         </div>
       </div>
     </div>
