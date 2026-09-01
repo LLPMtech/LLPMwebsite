@@ -161,6 +161,21 @@ const sections = [
           'To update the checklist itself: notify Lindsey',
         ],
       },
+      {
+        title: 'Property Inspection',
+        url: '/inspection',
+        owner: 'Lindsey',
+        description: 'Document property conditions with photos and detailed ratings. Upload exterior photos and notes on roof, facade, windows, paving, parking, landscaping, signage, lighting, HVAC, drainage, and fencing. Generate PDF reports for HubSpot.',
+        howToUpdate: [
+          '1. Open the Property Inspection page',
+          '2. Fill in property name, address, date, and inspector name',
+          '3. Upload up to 4 exterior photos (front, side, rear, roof)',
+          '4. Rate each condition area (Good, Fair, Poor, N/A)',
+          '5. Add notes and priority maintenance items',
+          '6. Click "Generate Inspection PDF" to create a report',
+          '7. Save PDF and upload to HubSpot',
+        ],
+      },
     ],
   },
   {
