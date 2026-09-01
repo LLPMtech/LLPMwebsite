@@ -29,6 +29,20 @@ const SCORECARD = {
     'Poor': 'Repair needed within 1-2 years',
     'Needs Work': 'Immediate repair needed'
   },
+  facade: {
+    'Excellent': 'New or like new condition',
+    'Good': 'No issues for 5+ years',
+    'Fair': 'Minor repairs within 2-5 years',
+    'Poor': 'Significant repairs within 1-2 years',
+    'Needs Work': 'Immediate attention required'
+  },
+  windows: {
+    'Excellent': 'New or like new condition',
+    'Good': 'No repairs needed for 5+ years',
+    'Fair': 'Minor repairs/replacements within 2-5 years',
+    'Poor': 'Significant repairs/replacements within 1-2 years',
+    'Needs Work': 'Immediate repair or replacement needed'
+  },
   paving: {
     'Excellent': 'New or like new surface',
     'Good': 'Repairs unlikely for 5+ years',
@@ -43,6 +57,27 @@ const SCORECARD = {
     'Poor': 'Resurfacing needed within 1-2 years',
     'Needs Work': 'Immediate repair/replacement needed'
   },
+  landscaping: {
+    'Excellent': 'Well-maintained, manicured appearance',
+    'Good': 'Attractive, minimal maintenance needed 5+ years',
+    'Fair': 'Basic upkeep required, improvements within 2-5 years',
+    'Poor': 'Overgrown or neglected, upgrades within 1-2 years',
+    'Needs Work': 'Immediate landscaping work required'
+  },
+  signage: {
+    'Excellent': 'New or like new, fully functional',
+    'Good': 'Well-maintained, 5+ years remaining',
+    'Fair': 'Minor repairs/updates within 2-5 years',
+    'Poor': 'Fading or damage, replacement within 1-2 years',
+    'Needs Work': 'Immediate repair or replacement needed'
+  },
+  lighting: {
+    'Excellent': 'New or recently installed',
+    'Good': 'Fully functional, 5+ years expected life',
+    'Fair': 'Functional but aging, updates within 2-5 years',
+    'Poor': 'Failing components, repair/replacement 1-2 years',
+    'Needs Work': 'Immediate safety concern, repair needed now'
+  },
   hvac: {
     'Excellent': 'New or recently serviced',
     'Good': 'Expected life 5+ years with regular maintenance',
@@ -50,19 +85,19 @@ const SCORECARD = {
     'Poor': 'Repair needed within 1-2 years',
     'Needs Work': 'Immediate repair or replacement needed'
   },
-  facade: {
-    'Excellent': 'New or like new condition',
-    'Good': 'No issues for 5+ years',
-    'Fair': 'Minor repairs within 2-5 years',
-    'Poor': 'Significant repairs within 1-2 years',
-    'Needs Work': 'Immediate attention required'
+  drainage: {
+    'Excellent': 'New or like new, fully functional',
+    'Good': 'No issues expected for 5+ years',
+    'Fair': 'Minor maintenance/repairs within 2-5 years',
+    'Poor': 'Repairs needed within 1-2 years',
+    'Needs Work': 'Immediate repair needed to prevent water damage'
   },
-  roof: {
+  fencing: {
     'Excellent': 'New or like new condition',
-    'Good': 'No issues for 5+ years',
-    'Fair': 'Repairs within 2-5 years',
-    'Poor': 'Repairs within 1-2 years',
-    'Needs Work': 'Immediate repair needed'
+    'Good': 'Well-maintained, 5+ years remaining',
+    'Fair': 'Minor repairs/maintenance within 2-5 years',
+    'Poor': 'Significant repairs needed within 1-2 years',
+    'Needs Work': 'Immediate repair or replacement needed'
   }
 };
 
