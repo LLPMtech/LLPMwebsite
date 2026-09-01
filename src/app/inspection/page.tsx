@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 
-type ConditionRating = 'Good' | 'Fair' | 'Poor' | 'Needs Work' | '';
+type ConditionRating = 'Good' | 'Fair' | 'Poor' | 'Needs Work' | 'N/A' | '';
 
 interface ConditionData {
   rating: ConditionRating;
@@ -26,7 +26,8 @@ const ratingColors: Record<ConditionRating, string> = {
   'Fair': 'bg-yellow-100 border-yellow-300 text-yellow-900',
   'Poor': 'bg-red-100 border-red-300 text-red-900',
   'Needs Work': 'bg-orange-100 border-orange-300 text-orange-900',
-  '': 'bg-gray-100 border-gray-300 text-gray-600',
+  'N/A': 'bg-gray-100 border-gray-300 text-gray-600',
+  '': 'bg-white border-gray-300 text-gray-600',
 };
 
 const ratingBgColors: Record<ConditionRating, string> = {
@@ -34,6 +35,7 @@ const ratingBgColors: Record<ConditionRating, string> = {
   'Fair': 'bg-yellow-50',
   'Poor': 'bg-red-50',
   'Needs Work': 'bg-orange-50',
+  'N/A': 'bg-gray-50',
   '': 'bg-white',
 };
 
@@ -74,22 +76,38 @@ export default function PropertyInspectionPage() {
     }
   };
 
-  const generateDocument = async () => {
+  const generatePDF = async () => {
+    // Create HTML content for PDF
+    const htmlContent = document.getElementById('inspection-report')?.innerHTML || '';
+    
+    // Create a temporary container
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlContent;
+    tempDiv.style.padding = '40px';
+    tempDiv.style.width = '8.5in';
+    tempDiv.style.fontFamily = 'Arial, sans-serif';
+    tempDiv.style.fontSize = '12px';
+    tempDiv.style.color = '#333';
+    
+    // Use html2pdf library
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+    script.async = true;
     script.onload = () => {
-      const element = document.getElementById('inspection-report');
-      if (element) {
-        const opt = {
-          margin: 10,
-          filename: `${data.propertyName.replace(/[^a-z0-9]/gi, '_')}_inspection_${new Date().toISOString().split('T')[0]}.pdf`,
-          image: { type: 'jpeg', quality: 0.98 },
-          html2canvas: { scale: 2 },
-          jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
-        };
-        const html2pdf = (window as any).html2pdf;
-        html2pdf().set(opt).from(element).save();
-      }
+      const html2pdf = (window as any).html2pdf;
+      const opt = {
+        margin: 0.5,
+        filename: `${data.propertyName.replace(/[^a-z0-9]/gi, '_')}_inspection_${new Date().toISOString().split('T')[0]}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+      
+      html2pdf()
+        .set(opt)
+        .from(tempDiv)
+        .save()
+        .catch((err: any) => console.error('PDF generation error:', err));
     };
     document.head.appendChild(script);
   };
@@ -108,7 +126,7 @@ export default function PropertyInspectionPage() {
     { key: 'fencing', label: 'Fencing & Gates' },
   ];
 
-  const ratings: ConditionRating[] = ['Good', 'Fair', 'Poor', 'Needs Work'];
+  const ratings: ConditionRating[] = ['Good', 'Fair', 'Needs Work', 'Poor', 'N/A'];
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -285,6 +303,10 @@ export default function PropertyInspectionPage() {
                 <div className="font-bold text-red-900">Poor</div>
                 <div className="text-xs text-red-700">Significant damage or major repair needed</div>
               </div>
+              <div className="p-3 rounded-lg border-2 bg-gray-50 border-gray-300">
+                <div className="font-bold text-gray-900">N/A</div>
+                <div className="text-xs text-gray-700">Not applicable to this property</div>
+              </div>
             </div>
           </div>
 
@@ -319,7 +341,7 @@ export default function PropertyInspectionPage() {
             </div>
 
             <button
-              onClick={generateDocument}
+              onClick={generatePDF}
               className="w-full bg-gold text-navy py-3 rounded-lg font-bold hover:bg-opacity-90 transition"
             >
               📥 Download as PDF
