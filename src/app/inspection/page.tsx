@@ -2,6 +2,13 @@
 
 import { useState, useRef } from 'react';
 
+type ConditionRating = 'Good' | 'Fair' | 'Poor' | 'Needs Work' | '';
+
+interface ConditionData {
+  rating: ConditionRating;
+  notes: string;
+}
+
 interface InspectionData {
   propertyName: string;
   address: string;
@@ -9,10 +16,26 @@ interface InspectionData {
   inspector: string;
   photos: string[];
   conditions: {
-    [key: string]: string;
+    [key: string]: ConditionData;
   };
   maintenanceItems: string;
 }
+
+const ratingColors: Record<ConditionRating, string> = {
+  'Good': 'bg-green-100 border-green-300 text-green-900',
+  'Fair': 'bg-yellow-100 border-yellow-300 text-yellow-900',
+  'Poor': 'bg-red-100 border-red-300 text-red-900',
+  'Needs Work': 'bg-orange-100 border-orange-300 text-orange-900',
+  '': 'bg-gray-100 border-gray-300 text-gray-600',
+};
+
+const ratingBgColors: Record<ConditionRating, string> = {
+  'Good': 'bg-green-50',
+  'Fair': 'bg-yellow-50',
+  'Poor': 'bg-red-50',
+  'Needs Work': 'bg-orange-50',
+  '': 'bg-white',
+};
 
 export default function PropertyInspectionPage() {
   const [data, setData] = useState<InspectionData>({
@@ -22,17 +45,17 @@ export default function PropertyInspectionPage() {
     inspector: '',
     photos: [],
     conditions: {
-      roof: '',
-      facade: '',
-      windows: '',
-      paving: '',
-      parking: '',
-      landscaping: '',
-      signage: '',
-      lighting: '',
-      hvac: '',
-      drainage: '',
-      fencing: '',
+      roof: { rating: '', notes: '' },
+      facade: { rating: '', notes: '' },
+      windows: { rating: '', notes: '' },
+      paving: { rating: '', notes: '' },
+      parking: { rating: '', notes: '' },
+      landscaping: { rating: '', notes: '' },
+      signage: { rating: '', notes: '' },
+      lighting: { rating: '', notes: '' },
+      hvac: { rating: '', notes: '' },
+      drainage: { rating: '', notes: '' },
+      fencing: { rating: '', notes: '' },
     },
     maintenanceItems: '',
   });
@@ -85,14 +108,16 @@ export default function PropertyInspectionPage() {
     { key: 'fencing', label: 'Fencing & Gates' },
   ];
 
-  return (
-    <div className="max-w-6xl mx-auto">
-      <h1 className="text-4xl font-bold text-navy mb-2">Property Inspection Report</h1>
-      <p className="text-gray-600 mb-8">Document exterior property conditions with photos and detailed notes</p>
+  const ratings: ConditionRating[] = ['Good', 'Fair', 'Poor', 'Needs Work'];
 
-      <div className="grid grid-cols-3 gap-8">
+  return (
+    <div className="max-w-7xl mx-auto">
+      <h1 className="text-4xl font-bold text-navy mb-2">Property Inspection Report</h1>
+      <p className="text-gray-600 mb-8">Document exterior property conditions with ratings and detailed notes</p>
+
+      <div className="grid grid-cols-4 gap-8">
         {/* Form */}
-        <div className="col-span-2 space-y-6">
+        <div className="col-span-3 space-y-6">
           {/* Property Details */}
           <div className="bg-white rounded-lg shadow p-6">
             <h2 className="text-lg font-bold text-navy mb-4">Property Details</h2>
@@ -159,7 +184,8 @@ export default function PropertyInspectionPage() {
                     ) : (
                       <div>
                         <div className="text-2xl mb-2">📷</div>
-                        <div className="text-sm text-gray-600">Photo {num}: {['Front Facade', 'Side/Parking', 'Rear/Loading', 'Roof/Entry'][idx]}</div>
+                        <div className="text-sm text-gray-600">Photo {num}</div>
+                        <div className="text-xs text-gray-500 mt-1">{['Front Facade', 'Side/Parking', 'Rear/Loading', 'Roof/Entry'][idx]}</div>
                       </div>
                     )}
                   </button>
@@ -178,19 +204,46 @@ export default function PropertyInspectionPage() {
           {/* Condition Assessment */}
           <div className="bg-white rounded-lg shadow p-6">
             <h2 className="text-lg font-bold text-navy mb-4">Condition Assessment</h2>
-            <div className="grid grid-cols-2 gap-6">
+            <div className="space-y-4">
               {conditionAreas.map(area => (
-                <div key={area.key}>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">{area.label}</label>
+                <div key={area.key} className={`p-4 rounded-lg border-2 ${ratingBgColors[data.conditions[area.key].rating]}`}>
+                  <div className="flex items-start justify-between mb-3">
+                    <label className="block font-medium text-gray-900">{area.label}</label>
+                    <select
+                      value={data.conditions[area.key].rating}
+                      onChange={e => setData(prev => ({
+                        ...prev,
+                        conditions: {
+                          ...prev.conditions,
+                          [area.key]: {
+                            ...prev.conditions[area.key],
+                            rating: e.target.value as ConditionRating
+                          }
+                        }
+                      }))}
+                      className={`px-3 py-1 rounded border-2 text-sm font-medium ${ratingColors[data.conditions[area.key].rating]}`}
+                    >
+                      <option value="">-- Select Rating --</option>
+                      {ratings.map(rating => (
+                        <option key={rating} value={rating}>{rating}</option>
+                      ))}
+                    </select>
+                  </div>
                   <textarea
-                    value={data.conditions[area.key]}
+                    value={data.conditions[area.key].notes}
                     onChange={e => setData(prev => ({
                       ...prev,
-                      conditions: { ...prev.conditions, [area.key]: e.target.value }
+                      conditions: {
+                        ...prev.conditions,
+                        [area.key]: {
+                          ...prev.conditions[area.key],
+                          notes: e.target.value
+                        }
+                      }
                     }))}
-                    placeholder="Condition notes..."
+                    placeholder="Add detailed notes..."
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gold"
-                    rows={3}
+                    rows={2}
                   />
                 </div>
               ))}
@@ -210,43 +263,57 @@ export default function PropertyInspectionPage() {
           </div>
         </div>
 
-        {/* Preview & Generate */}
+        {/* Sidebar: Legend & Preview */}
         <div className="space-y-6">
+          {/* Legend */}
           <div className="bg-white rounded-lg shadow p-6 sticky top-24">
+            <h2 className="text-lg font-bold text-navy mb-4">Condition Legend</h2>
+            <div className="space-y-3">
+              <div className="p-3 rounded-lg border-2 bg-green-50 border-green-300">
+                <div className="font-bold text-green-900">Good</div>
+                <div className="text-xs text-green-700">Well-maintained, no immediate issues</div>
+              </div>
+              <div className="p-3 rounded-lg border-2 bg-yellow-50 border-yellow-300">
+                <div className="font-bold text-yellow-900">Fair</div>
+                <div className="text-xs text-yellow-700">Minor wear, routine maintenance recommended</div>
+              </div>
+              <div className="p-3 rounded-lg border-2 bg-orange-50 border-orange-300">
+                <div className="font-bold text-orange-900">Needs Work</div>
+                <div className="text-xs text-orange-700">Visible issues, should be addressed soon</div>
+              </div>
+              <div className="p-3 rounded-lg border-2 bg-red-50 border-red-300">
+                <div className="font-bold text-red-900">Poor</div>
+                <div className="text-xs text-red-700">Significant damage or major repair needed</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Preview */}
+          <div className="bg-white rounded-lg shadow p-6">
             <h2 className="text-lg font-bold text-navy mb-4">Report Preview</h2>
-            <div id="inspection-report" className="text-xs mb-6 p-4 bg-gray-50 rounded border border-gray-200" style={{ maxHeight: '400px', overflowY: 'auto' }}>
+            <div id="inspection-report" className="text-xs mb-4 p-3 bg-gray-50 rounded border border-gray-200 space-y-2" style={{ maxHeight: '500px', overflowY: 'auto' }}>
               <div className="font-bold text-center mb-2">LIFE LONG PROPERTY MANAGEMENT</div>
-              <div className="font-bold text-center mb-3">Property Inspection Report</div>
-              <div className="mb-3 space-y-1">
+              <div className="font-bold text-center mb-2">Property Inspection Report</div>
+              <div className="mb-2 space-y-1 pb-2 border-b">
                 <div><strong>Property:</strong> {data.propertyName || '[Property Name]'}</div>
                 <div><strong>Address:</strong> {data.address || '[Address]'}</div>
                 <div><strong>Date:</strong> {data.dateVisited} | <strong>Inspector:</strong> {data.inspector || '[Name]'}</div>
               </div>
-              
-              {data.photos.some(p => p) && (
-                <div className="mb-3">
-                  <div className="font-bold mb-1">Photos:</div>
-                  <div className="grid grid-cols-2 gap-1">
-                    {data.photos.map((photo, i) => (
-                      photo && <div key={i} className="bg-gray-300 h-12 text-center text-xs flex items-center justify-center">Photo {i+1}</div>
-                    ))}
-                  </div>
-                </div>
-              )}
 
               <div className="font-bold mb-1">Condition Assessment:</div>
-              <div className="text-xs space-y-1">
+              <div className="space-y-1">
                 {conditionAreas.map(area => (
-                  <div key={area.key}>
-                    <strong>{area.label}:</strong> {data.conditions[area.key] || '—'}
+                  <div key={area.key} className="text-xs">
+                    <strong>{area.label}:</strong> {data.conditions[area.key].rating || 'Not rated'}
+                    {data.conditions[area.key].notes && <div className="ml-2 text-gray-600">{data.conditions[area.key].notes}</div>}
                   </div>
                 ))}
               </div>
 
               {data.maintenanceItems && (
-                <div className="mt-3 pt-3 border-t border-gray-300">
+                <div className="mt-2 pt-2 border-t border-gray-300">
                   <div className="font-bold mb-1">Priority Maintenance:</div>
-                  <div className="text-xs">{data.maintenanceItems}</div>
+                  <div className="text-xs whitespace-pre-wrap">{data.maintenanceItems}</div>
                 </div>
               )}
             </div>
