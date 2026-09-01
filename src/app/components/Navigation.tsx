@@ -45,8 +45,8 @@ export default function Navigation() {
             <Link href="/contact" className="text-white hover:text-gold transition font-medium">
               Contact
             </Link>
-            <Link href="/inspection" className="text-white hover:text-gold transition font-medium">
-              Inspection
+            <Link href="/internal" className="text-white hover:text-gold transition font-medium">
+              Internal
             </Link>
           </div>
 
@@ -98,11 +98,11 @@ export default function Navigation() {
               Contact
             </Link>
             <Link
-              href="/inspection"
+              href="/internal"
               className="block px-3 py-2 rounded text-navy hover:bg-gray-100 font-medium"
               onClick={() => setIsOpen(false)}
             >
-              Inspection
+              Internal
             </Link>
           </div>
         )}

@@ -1,13 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const INTERNAL_ROUTES = ['/vacancy', '/move-in', '/move-out', '/docs', '/marketing', '/flyer', '/flyer5', '/inspection', '/sop'];
 const PASSWORD = '@internal!llpm1';
 const COOKIE_NAME = 'llpm_internal_auth';
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  const isInternal = INTERNAL_ROUTES.some(route => pathname.startsWith(route));
+  const isInternal = pathname.startsWith('/internal');
   if (!isInternal) return NextResponse.next();
 
   // Check if already authenticated via cookie
@@ -120,5 +119,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/vacancy/:path*', '/move-in/:path*', '/move-out/:path*', '/docs/:path*', '/marketing/:path*', '/flyer/:path*', '/flyer5/:path*', '/inspection/:path*', '/sop/:path*'],
+  matcher: ['/internal/:path*'],
 };
