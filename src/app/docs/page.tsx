@@ -316,12 +316,13 @@ export default function DocsPage() {
       <section className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-4">Quick Access — Internal Tools</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-8 gap-3">
             {[
               { label: 'Vacancy Report', url: '/vacancy', color: 'bg-navy' },
               { label: 'Move-In Checklist', url: '/move-in', color: 'bg-gold' },
               { label: 'Move-Out Checklist', url: '/move-out', color: 'bg-rust-orange' },
               { label: 'Lead Management SOP', url: '/sop', color: 'bg-rust-orange' },
+              { label: 'Property Inspection', url: '/inspection', color: 'bg-navy' },
               { label: 'Marketing Templates', url: '/marketing', color: 'bg-navy' },
               { label: 'HubSpot', url: 'https://app.hubspot.com', color: 'bg-orange-500' },
               { label: 'GitHub', url: 'https://github.com/LLPMtech/LLPMwebsite', color: 'bg-gray-800' },
