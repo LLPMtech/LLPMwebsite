@@ -21,6 +21,51 @@ interface InspectionData {
   maintenanceItems: string;
 }
 
+const SCORECARD = {
+  roof: {
+    'Excellent': 'New or like new condition',
+    'Good': 'Repairs unlikely for 5+ years',
+    'Fair': 'Repair likely needed within 2-5 years',
+    'Poor': 'Repair needed within 1-2 years',
+    'Needs Work': 'Immediate repair needed'
+  },
+  paving: {
+    'Excellent': 'New or like new surface',
+    'Good': 'Repairs unlikely for 5+ years',
+    'Fair': 'Seal coat or minor repairs within 2-5 years',
+    'Poor': 'Repaving needed within 1-2 years',
+    'Needs Work': 'Immediate repair/replacement needed'
+  },
+  parking: {
+    'Excellent': 'New or like new condition',
+    'Good': 'Repairs unlikely for 5+ years',
+    'Fair': 'Minor repairs within 2-5 years',
+    'Poor': 'Resurfacing needed within 1-2 years',
+    'Needs Work': 'Immediate repair/replacement needed'
+  },
+  hvac: {
+    'Excellent': 'New or recently serviced',
+    'Good': 'Expected life 5+ years with regular maintenance',
+    'Fair': 'Expected life 2-5 years, maintenance recommended',
+    'Poor': 'Repair needed within 1-2 years',
+    'Needs Work': 'Immediate repair or replacement needed'
+  },
+  facade: {
+    'Excellent': 'New or like new condition',
+    'Good': 'No issues for 5+ years',
+    'Fair': 'Minor repairs within 2-5 years',
+    'Poor': 'Significant repairs within 1-2 years',
+    'Needs Work': 'Immediate attention required'
+  },
+  roof: {
+    'Excellent': 'New or like new condition',
+    'Good': 'No issues for 5+ years',
+    'Fair': 'Repairs within 2-5 years',
+    'Poor': 'Repairs within 1-2 years',
+    'Needs Work': 'Immediate repair needed'
+  }
+};
+
 export default function PropertyInspectionPage() {
   const [data, setData] = useState<InspectionData>({
     propertyName: '',
@@ -44,6 +89,8 @@ export default function PropertyInspectionPage() {
     maintenanceItems: '',
   });
 
+  const [showScorecard, setShowScorecard] = useState<string | null>(null);
+
   const fileRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const handlePhotoUpload = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,10 +108,6 @@ export default function PropertyInspectionPage() {
   const downloadPDF = () => {
     const printWindow = window.open('', '', 'width=900,height=1200');
     if (!printWindow) return;
-    
-    const photoHTML = data.photos.map((photo, i) => 
-      photo ? `<div style="margin: 10px 0;"><img src="${photo}" style="max-width: 100%; height: auto; border: 1px solid #ccc;"/></div>` : ''
-    ).join('');
     
     printWindow.document.write(`
       <html>
@@ -202,13 +245,25 @@ export default function PropertyInspectionPage() {
             <div className="space-y-3">
               {conditionAreas.map(area => (
                 <div key={area.key}>
-                  <div className="flex justify-between mb-1">
+                  <div className="flex justify-between items-center mb-1">
                     <label className="font-medium text-sm">{area.label}</label>
-                    <select value={data.conditions[area.key].rating} onChange={e => setData({...data, conditions: {...data.conditions, [area.key]: {...data.conditions[area.key], rating: e.target.value as ConditionRating}}})} className="p-1 border rounded text-sm">
-                      <option value="">Select</option>
-                      {ratings.map(r => <option key={r} value={r}>{r}</option>)}
-                    </select>
+                    <div className="flex gap-2">
+                      <select value={data.conditions[area.key].rating} onChange={e => setData({...data, conditions: {...data.conditions, [area.key]: {...data.conditions[area.key], rating: e.target.value as ConditionRating}}})} className="p-1 border rounded text-sm">
+                        <option value="">Select</option>
+                        {ratings.map(r => <option key={r} value={r}>{r}</option>)}
+                      </select>
+                      {SCORECARD[area.key as keyof typeof SCORECARD] && (
+                        <button type="button" onClick={() => setShowScorecard(showScorecard === area.key ? null : area.key)} className="px-2 py-1 bg-navy text-white rounded text-xs hover:bg-opacity-80">?</button>
+                      )}
+                    </div>
                   </div>
+                  {showScorecard === area.key && SCORECARD[area.key as keyof typeof SCORECARD] && (
+                    <div className="p-2 bg-blue-50 rounded border border-blue-200 text-xs mb-2">
+                      {Object.entries(SCORECARD[area.key as keyof typeof SCORECARD]).map(([rating, desc]) => (
+                        <div key={rating} className="mb-1"><strong>{rating}:</strong> {desc}</div>
+                      ))}
+                    </div>
+                  )}
                   <textarea value={data.conditions[area.key].notes} onChange={e => setData({...data, conditions: {...data.conditions, [area.key]: {...data.conditions[area.key], notes: e.target.value}}})} placeholder="Notes..." className="w-full p-2 border rounded text-xs" rows={2} />
                 </div>
               ))}
@@ -234,7 +289,7 @@ export default function PropertyInspectionPage() {
             </div>
             {data.photos.some(p => p) && (
               <div className="mb-2">
-                <strong className="text-xs">Photos uploaded: {data.photos.filter(p => p).length}</strong>
+                <strong className="text-xs">Photos: {data.photos.filter(p => p).length}</strong>
               </div>
             )}
             {conditionAreas.map(a => (
