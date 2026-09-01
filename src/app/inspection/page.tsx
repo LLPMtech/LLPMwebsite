@@ -63,6 +63,7 @@ export default function PropertyInspectionPage() {
   });
 
   const fileRefs = [useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null)];
+  const reportRef = useRef<HTMLDivElement>(null);
 
   const handlePhotoUpload = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.[0]) {
@@ -77,39 +78,36 @@ export default function PropertyInspectionPage() {
   };
 
   const generatePDF = async () => {
-    // Create HTML content for PDF
-    const htmlContent = document.getElementById('inspection-report')?.innerHTML || '';
-    
-    // Create a temporary container
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = htmlContent;
-    tempDiv.style.padding = '40px';
-    tempDiv.style.width = '8.5in';
-    tempDiv.style.fontFamily = 'Arial, sans-serif';
-    tempDiv.style.fontSize = '12px';
-    tempDiv.style.color = '#333';
-    
-    // Use html2pdf library
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-    script.async = true;
-    script.onload = () => {
-      const html2pdf = (window as any).html2pdf;
-      const opt = {
-        margin: 0.5,
-        filename: `${data.propertyName.replace(/[^a-z0-9]/gi, '_')}_inspection_${new Date().toISOString().split('T')[0]}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true },
-        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    if (!reportRef.current) return;
+
+    try {
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+      script.onload = () => {
+        try {
+          const element = reportRef.current;
+          const html2pdf = (window as any).html2pdf();
+          
+          html2pdf
+            .set({
+              margin: 10,
+              filename: `${data.propertyName.replace(/[^a-z0-9]/gi, '_') || 'inspection'}_${new Date().toISOString().split('T')[0]}.pdf`,
+              image: { type: 'jpeg', quality: 0.98 },
+              html2canvas: { scale: 2, useCORS: true, logging: false },
+              jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            })
+            .from(element)
+            .save();
+        } catch (error) {
+          console.error('PDF error:', error);
+          alert('Error generating PDF. Please try again.');
+        }
       };
-      
-      html2pdf()
-        .set(opt)
-        .from(tempDiv)
-        .save()
-        .catch((err: any) => console.error('PDF generation error:', err));
-    };
-    document.head.appendChild(script);
+      document.head.appendChild(script);
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error generating PDF');
+    }
   };
 
   const conditionAreas = [
@@ -313,29 +311,29 @@ export default function PropertyInspectionPage() {
           {/* Preview */}
           <div className="bg-white rounded-lg shadow p-6">
             <h2 className="text-lg font-bold text-navy mb-4">Report Preview</h2>
-            <div id="inspection-report" className="text-xs mb-4 p-3 bg-gray-50 rounded border border-gray-200 space-y-2" style={{ maxHeight: '500px', overflowY: 'auto' }}>
-              <div className="font-bold text-center mb-2">LIFE LONG PROPERTY MANAGEMENT</div>
-              <div className="font-bold text-center mb-2">Property Inspection Report</div>
-              <div className="mb-2 space-y-1 pb-2 border-b">
+            <div ref={reportRef} className="text-xs mb-4 p-4 bg-white rounded border border-gray-200 space-y-2" style={{ maxHeight: '500px', overflowY: 'auto' }}>
+              <div style={{ fontWeight: 'bold', textAlign: 'center', marginBottom: '8px', fontSize: '14px' }}>LIFE LONG PROPERTY MANAGEMENT</div>
+              <div style={{ fontWeight: 'bold', textAlign: 'center', marginBottom: '12px', fontSize: '14px' }}>Property Inspection Report</div>
+              <div style={{ marginBottom: '12px', paddingBottom: '8px', borderBottom: '1px solid #ddd' }}>
                 <div><strong>Property:</strong> {data.propertyName || '[Property Name]'}</div>
                 <div><strong>Address:</strong> {data.address || '[Address]'}</div>
                 <div><strong>Date:</strong> {data.dateVisited} | <strong>Inspector:</strong> {data.inspector || '[Name]'}</div>
               </div>
 
-              <div className="font-bold mb-1">Condition Assessment:</div>
-              <div className="space-y-1">
+              <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>Condition Assessment:</div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
                 {conditionAreas.map(area => (
-                  <div key={area.key} className="text-xs">
+                  <div key={area.key} style={{ fontSize: '11px', borderBottom: '1px solid #eee', paddingBottom: '4px' }}>
                     <strong>{area.label}:</strong> {data.conditions[area.key].rating || 'Not rated'}
-                    {data.conditions[area.key].notes && <div className="ml-2 text-gray-600">{data.conditions[area.key].notes}</div>}
+                    {data.conditions[area.key].notes && <div style={{ marginLeft: '8px', color: '#666', marginTop: '2px' }}>{data.conditions[area.key].notes}</div>}
                   </div>
                 ))}
               </div>
 
               {data.maintenanceItems && (
-                <div className="mt-2 pt-2 border-t border-gray-300">
-                  <div className="font-bold mb-1">Priority Maintenance:</div>
-                  <div className="text-xs whitespace-pre-wrap">{data.maintenanceItems}</div>
+                <div style={{ marginTop: '12px', paddingTop: '8px', borderTop: '1px solid #ddd' }}>
+                  <div style={{ fontWeight: 'bold', marginBottom: '4px' }}>Priority Maintenance:</div>
+                  <div style={{ fontSize: '11px', whiteSpace: 'pre-wrap' }}>{data.maintenanceItems}</div>
                 </div>
               )}
             </div>
