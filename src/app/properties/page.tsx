@@ -104,6 +104,15 @@ const properties: Property[] = [
     loopnetUrl: 'https://www.loopnet.com/company/hawkins-family-partners/4ev29nll/',
     description: 'Retail property for sale in Victoria, TX.',
   },
+  {
+    id: '11',
+    name: '5506 W Highway 290',
+    address: '5506 W Highway 290, Austin, TX 78735',
+    type: 'Office',
+    status: 'For Lease',
+    loopnetUrl: 'https://www.loopnet.com/Listing/5506-W-Highway-290-Austin-TX/40103653/',
+    description: 'Office space for lease on W Highway 290 in Austin, TX.',
+  },
 ];
 
 const typeColors: Record<string, string> = {
