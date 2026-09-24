@@ -15,15 +15,6 @@ interface Property {
 
 const properties: Property[] = [
   {
-    id: '1',
-    name: 'Liberty Meadows Plaza',
-    address: '12701 W Tx-29 Hwy, Liberty Hill, TX 78642',
-    type: 'Retail',
-    status: 'For Lease',
-    loopnetUrl: 'https://www.loopnet.com/Listing/12701-W-Tx-29-Hwy-Liberty-Hill-TX/19745022/',
-    description: 'Newly renovated strip center with pylon signage, dedicated turn lane, and 63 parking spaces.',
-  },
-  {
     id: '2',
     name: 'Rio Gabriel Plaza',
     address: '13750 W Highway 29, Liberty Hill, TX 78642',
