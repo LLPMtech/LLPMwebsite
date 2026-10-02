@@ -104,6 +104,15 @@ const properties: Property[] = [
     loopnetUrl: 'https://www.loopnet.com/Listing/5506-W-Highway-290-Austin-TX/40103653/',
     description: 'Office space for lease on W Highway 290 in Austin, TX.',
   },
+  {
+    id: '12',
+    name: '9125 W Highway 71',
+    address: '9125 W Highway 71, Austin, TX 78735',
+    type: 'Retail',
+    status: 'For Lease',
+    loopnetUrl: 'https://www.loopnet.com/Listing/9125-W-Highway-71-Austin-TX/41014146/',
+    description: 'Retail space for lease on W Highway 71 in Austin, TX.',
+  },
 ];
 
 const typeColors: Record<string, string> = {
