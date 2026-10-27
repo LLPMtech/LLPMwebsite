@@ -78,15 +78,6 @@ const properties: Property[] = [
     description: 'Retail space on high-traffic East William Cannon Drive in South Austin.',
   },
   {
-    id: '9',
-    name: '9125 W Highway 71',
-    address: '9125 W Highway 71, Austin, TX 78735',
-    type: 'Retail',
-    status: 'For Lease',
-    loopnetUrl: 'https://www.loopnet.com/company/hawkins-family-partners/4ev29nll/',
-    description: 'Retail space along West Highway 71 in Austin.',
-  },
-  {
     id: '10',
     name: '5508 N Navarro St',
     address: '5508 N Navarro St, Victoria, TX 77904',
@@ -112,6 +103,15 @@ const properties: Property[] = [
     status: 'For Lease',
     loopnetUrl: 'https://www.loopnet.com/Listing/9125-W-Highway-71-Austin-TX/41014146/',
     description: 'Retail space for lease on W Highway 71 in Austin, TX.',
+  },
+  {
+    id: '13',
+    name: 'Oak Acres Shopping Center',
+    address: '5716 Hwy 290 W, Austin, TX 78735',
+    type: 'Retail',
+    status: 'For Lease',
+    loopnetUrl: 'https://www.loopnet.com/Listing/5716-Hwy-290-W-Austin-TX/25328916/',
+    description: 'Shopping center space for lease on Hwy 290 W in Austin, TX.',
   },
 ];
 
