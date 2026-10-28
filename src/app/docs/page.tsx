@@ -8,7 +8,7 @@ const sections = [
     items: [
       {
         title: 'Public Website',
-        url: 'https://www.lifelongpropertymanagement.com',
+        url: 'https://www.lifelongpm.com',
         owner: 'Lindsey',
         description: 'Main company website. Built on Next.js, hosted on Vercel, code stored on GitHub.',
         howToUpdate: [
@@ -66,7 +66,7 @@ const sections = [
     items: [
       {
         title: 'Website Contact Form → HubSpot',
-        url: 'https://www.lifelongpropertymanagement.com/contact',
+        url: 'https://www.lifelongpm.com/contact',
         owner: 'Lindsey',
         description: 'When a prospect fills out the contact form, they automatically receive an auto-reply and a new contact is created in HubSpot.',
         howToUpdate: [
@@ -370,7 +370,7 @@ export default function DocsPage() {
                           rel="noopener noreferrer"
                           className="inline-block text-xs bg-gray-100 text-navy px-3 py-1 rounded font-mono mb-4 hover:bg-gold hover:text-navy transition"
                         >
-                          {item.url.startsWith('/') ? `lifelongpropertymanagement.com${item.url}` : item.url}
+                          {item.url.startsWith('/') ? `lifelongpm.com${item.url}` : item.url}
                         </a>
                       )}
 

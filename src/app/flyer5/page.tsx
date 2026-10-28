@@ -334,7 +334,7 @@ export default function Flyer5Page() {
             <div style="color:#9CA3AF;font-size:9px;margin-top:2px;">${form.contactPhone || '(512) 892-6001'}  ·  ${form.contactEmail || 'pm@lifelongpm.com'}</div>
           </div>
           <div style="text-align:right;">
-            <div style="color:#9CA3AF;font-size:8px;">lifelongpropertymanagement.com</div>
+            <div style="color:#9CA3AF;font-size:8px;">lifelongpm.com</div>
             <div style="color:#6B7280;font-size:6.5px;margin-top:4px;max-width:280px;text-align:right;">The information contained herein has been obtained from sources deemed reliable. While we do not doubt its accuracy, we have not verified it and make no guarantee, warranty, or representation about it. ©2026 Life Long Property Management.</div>
           </div>
         </div>

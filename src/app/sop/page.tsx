@@ -173,7 +173,7 @@ export default function SOPPage() {
                 { step: 'Update the contact record', detail: 'Add email if you have it. Set Lifecycle Stage → Lead, Lead Status → New. Add a note: "Voicemail received [date] re: [Property Name]. Caller said: [summary]."' },
                 { step: 'Create a follow-up task', detail: 'Click Create Task → "Call back [Name] re: [Property]" → assign to yourself or Norman → due today or tomorrow.' },
                 { step: 'Return the call', detail: 'Call from Dialpad so it auto-logs in HubSpot. If you reach them, update Lead Status → Connected. If no answer, leave a voicemail and log a note.' },
-                { step: 'Send property info', detail: 'If they\'re a fit, email the listing flyer (generate from lifelongpropertymanagement.com/flyer). Log the email in HubSpot.' },
+                { step: 'Send property info', detail: 'If they\'re a fit, email the listing flyer (generate from lifelongpm.com/flyer). Log the email in HubSpot.' },
                 { step: 'Update Lead Status', detail: 'Move to Open Deal if actively discussing, Bad Timing if they need more time, or Unqualified if not a fit.' },
               ].map((s, i) => (
                 <li key={i} className="flex items-start gap-4">

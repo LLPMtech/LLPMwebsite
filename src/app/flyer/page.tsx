@@ -177,7 +177,7 @@ ${photo
     <div class="footer-name">${form.contactName || 'Life Long Property Management'} ${form.contactTitle ? '· ' + form.contactTitle : ''}</div>
     <div class="footer-info">${[form.contactPhone, form.contactEmail].filter(Boolean).join('  ·  ')}</div>
   </div>
-  <div class="footer-web">lifelongpropertymanagement.com</div>
+  <div class="footer-web">lifelongpm.com</div>
 </div>
 <div class="disclaimer">The information contained herein has been obtained from sources deemed reliable. While we do not doubt its accuracy, we have not verified it and make no guarantee, warranty, or representation about it. ©2026 Life Long Property Management. All rights reserved.</div>
 

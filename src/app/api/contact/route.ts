@@ -100,7 +100,7 @@ export async function POST(req: NextRequest) {
               <p style="font-weight: bold; color: #1F3A5F; margin: 0 0 8px;">Message:</p>
               <p style="margin: 0; white-space: pre-wrap;">${message}</p>
             </div>
-            <p style="margin-top: 16px; color: #999; font-size: 12px;">Sent from lifelongpropertymanagement.com</p>
+            <p style="margin-top: 16px; color: #999; font-size: 12px;">Sent from lifelongpm.com</p>
           </div>
         </div>
       `,
@@ -124,7 +124,7 @@ export async function POST(req: NextRequest) {
               <li style="padding: 4px 0;">✉️ <strong>pm@lifelongpm.com</strong></li>
               <li style="padding: 4px 0;">📍 <strong>5716 Hwy 290 West #200, Austin, TX 78735</strong></li>
             </ul>
-            <p style="color: #999; font-size: 12px; margin-top: 24px;">Life Long Property Management | lifelongpropertymanagement.com</p>
+            <p style="color: #999; font-size: 12px; margin-top: 24px;">Life Long Property Management | lifelongpm.com</p>
           </div>
         </div>
       `,
