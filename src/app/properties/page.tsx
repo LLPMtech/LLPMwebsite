@@ -115,12 +115,12 @@ const properties: Property[] = [
   },
   {
     id: '14',
-    name: "Bluff's Landing Restaurant",
+    name: 'Waterfront Restaurant',
     address: '4242 Laguna Shores Rd, Corpus Christi, TX 78418',
     type: 'Retail',
     status: 'For Lease',
     loopnetUrl: 'https://www.loopnet.com/Listing/4242-Laguna-Shores-Rd-Corpus-Christi-TX/40093538/',
-    description: "3,000 SF restaurant space for lease at Bluff's Landing Marina & Lodge in Corpus Christi, TX.",
+    description: '3,000 SF waterfront restaurant space for lease in Corpus Christi, TX.',
   },
 ];
 
