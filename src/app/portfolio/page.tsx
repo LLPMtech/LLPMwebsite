@@ -94,7 +94,8 @@ const development: Project[] = [
   { name: '3301 Shell Road', location: 'Georgetown, TX', tag: 'Acquisition + Phase 2 Development', detail: 'Acquisition followed by Phase 2 ground-up development.' },
   { name: '101 Caribbean Drive', location: 'Corpus Christi, TX', tag: 'Ground-Up Development', detail: 'Ground-up development of an RV park, now operating as a KOA.',
     facts: ['RV park built from the ground up', 'Sold'] },
-  { name: 'Bluff\'s Landing Marina & Lodge', location: '4242 Laguna Shores Rd, Corpus Christi, TX', tag: 'Redevelopment', detail: 'Complete redevelopment of the marina.' },
+  { name: 'Bluff\'s Landing Marina & Lodge', location: '4242 Laguna Shores Rd, Corpus Christi, TX', tag: 'Redevelopment', detail: 'Complete redevelopment of the marina.',
+    facts: ['Marina fully redeveloped', 'Sold'] },
   { name: '12705 SH-29', location: 'Liberty Hill, TX', tag: 'Value-Add Expansion', detail: 'Value-add building expansion development.' },
 ];
 
