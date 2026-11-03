@@ -78,6 +78,27 @@ const properties: Property[] = [
 ];
 
 
+interface Project {
+  name: string;
+  location: string;
+  tag: string;
+  detail: string;
+}
+
+const development: Project[] = [
+  { name: 'Hangars Warehouse Park', location: 'Del Valle, TX', tag: 'Ground-Up Development', detail: 'Ground-up development of a warehouse park.' },
+  { name: '3301 Shell Road', location: 'Georgetown, TX', tag: 'Acquisition + Phase 2 Development', detail: 'Acquisition followed by Phase 2 ground-up development.' },
+  { name: '101 Caribbean Drive', location: 'Corpus Christi, TX', tag: 'Ground-Up Development', detail: 'Ground-up development of an RV park.' },
+  { name: '12705 SH-29', location: 'Liberty Hill, TX', tag: 'Value-Add Expansion', detail: 'Value-add building expansion development.' },
+];
+
+const acquisitions: Project[] = [
+  { name: 'Wimberley Medical', location: 'Wimberley, TX', tag: 'Acquisition', detail: '' },
+  { name: '3900 FM 620', location: 'Bee Cave, TX', tag: 'Acquisition', detail: '' },
+  { name: '320 North Ridge', location: 'Marble Falls, TX', tag: 'Acquisition', detail: '' },
+  { name: '9110 US 183', location: 'Austin, TX', tag: 'Acquisition', detail: '' },
+];
+
 export default function PortfolioPage() {
   const [search, setSearch] = useState('');
   const [selectedCity, setSelectedCity] = useState('All');
@@ -106,15 +127,59 @@ export default function PortfolioPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold mb-4">Our Portfolio</h1>
           <p className="text-xl text-gray-200">
-            {properties.length} properties across Central Texas and beyond — owned and managed by LLPM since 1998.
+            Owned, developed and managed by LLPM since 1998 — {properties.length} properties across Central Texas and beyond.
           </p>
+        </div>
+      </section>
+
+
+      {/* Development */}
+      <section className="bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <h2 className="text-3xl font-bold text-navy mb-2 flex items-center">
+            <span className="w-2 h-8 bg-rust-orange rounded mr-3 inline-block" />
+            Development
+          </h2>
+          <p className="text-gray-500 mb-6">We don&apos;t just manage property — we build it.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {development.map(project => (
+              <div key={project.name} className="rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition bg-white">
+                <div className="h-28 bg-gradient-to-br from-navy to-rust-orange flex items-end p-4">
+                  <span className="bg-gold text-navy text-xs font-semibold px-2 py-1 rounded">{project.tag}</span>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-semibold text-navy mb-1">{project.name}</h3>
+                  <p className="text-gray-400 text-xs mb-2">{project.location}</p>
+                  <p className="text-gray-600 text-sm">{project.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Acquisitions */}
+      <section className="bg-gray-50 border-y border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <h2 className="text-3xl font-bold text-navy mb-6 flex items-center">
+            <span className="w-2 h-8 bg-gold rounded mr-3 inline-block" />
+            Acquisitions
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {acquisitions.map(project => (
+              <div key={project.name} className="bg-white rounded-lg border border-gray-100 shadow-sm p-5 border-l-4 border-l-gold">
+                <h3 className="font-semibold text-navy">{project.name}</h3>
+                <p className="text-gray-400 text-xs mt-1">{project.location}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Map */}
       <section className="bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <h2 className="text-2xl font-bold text-navy mb-2">Portfolio Map</h2>
+          <h2 className="text-2xl font-bold text-navy mb-2">Full Portfolio Map</h2>
           <p className="text-gray-500 text-sm mb-4">Click any pin to see property details.</p>
           <Suspense fallback={<div className="h-96 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">Loading map...</div>}>
             <PortfolioMap />
