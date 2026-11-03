@@ -83,10 +83,12 @@ interface Project {
   location: string;
   tag: string;
   detail: string;
+  facts?: string[];
 }
 
 const development: Project[] = [
-  { name: 'Hangars Warehouse Park', location: 'Del Valle, TX', tag: 'Ground-Up Development', detail: 'Ground-up development of a warehouse park.' },
+  { name: 'Hangars Warehouse Park', location: 'Del Valle, TX', tag: 'Ground-Up Development', detail: 'Nine flex and logistics buildings next to Austin-Bergstrom Airport (ABIA), with direct access to FM 973 and visibility from SH-130.',
+    facts: ['9 buildings, built 2025', 'PEMB and tilt-wall construction', 'Spaces from 2,163 to 50,917 SF', '24\' to 28\' clear heights'] },
   { name: '3301 Shell Road', location: 'Georgetown, TX', tag: 'Acquisition + Phase 2 Development', detail: 'Acquisition followed by Phase 2 ground-up development.' },
   { name: '101 Caribbean Drive', location: 'Corpus Christi, TX', tag: 'Ground-Up Development', detail: 'Ground-up development of an RV park.' },
   { name: '12705 SH-29', location: 'Liberty Hill, TX', tag: 'Value-Add Expansion', detail: 'Value-add building expansion development.' },
@@ -151,6 +153,13 @@ export default function PortfolioPage() {
                   <h3 className="font-semibold text-navy mb-1">{project.name}</h3>
                   <p className="text-gray-400 text-xs mb-2">{project.location}</p>
                   <p className="text-gray-600 text-sm">{project.detail}</p>
+                  {project.facts && (
+                    <ul className="mt-3 space-y-1 text-xs text-navy">
+                      {project.facts.map(f => (
+                        <li key={f} className="flex items-start"><span className="text-rust-orange mr-2">&#9656;</span>{f}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             ))}
