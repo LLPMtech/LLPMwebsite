@@ -122,7 +122,8 @@ const acquisitions: Project[] = [
     facts: ['Built 1996', '12,775 SF', '2.62 acres', 'Fully leased'] },
   { name: '320 North Ridge', location: '320 North Ridge Rd, Marble Falls, TX', tag: 'Acquisition', detail: '', image: '/320-north-ridge.jpg',
     facts: ['Flex space, built 2023', '4 buildings, 16 units', '26,400 rentable SF', '1.88 acres'] },
-  { name: '9110 US 183', location: 'Austin, TX', tag: 'Acquisition', detail: '' },
+  { name: '9110 US 183', location: 'Austin, TX', tag: 'Acquisition', detail: '', image: '/9110-us-183.jpg',
+    facts: ['11.22 acres, unzoned', '1,000+ ft of US 183 frontage'] },
 ];
 
 export default function PortfolioPage() {
