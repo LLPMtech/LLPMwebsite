@@ -9,7 +9,6 @@ interface Property {
   city: string;
   state: string;
   image?: string;
-  gallery?: { src: string; label: string }[];
 }
 
 const properties: Property[] = [
@@ -86,14 +85,15 @@ interface Project {
   detail: string;
   facts?: string[];
   image?: string;
+  gallery?: { src: string; label: string }[];
 }
 
 const development: Project[] = [
   { name: 'The Hangars', location: '5615 FM 973, Del Valle, TX', tag: 'Ground-Up Development', detail: 'Nine-building Class A flex/industrial park next to Austin-Bergstrom Airport (ABIA), with multiple access points on FM 973.',
     image: '/hangars.jpg',
     facts: ['217,288 SF across 9 buildings', 'Flex (PEMB) and tilt-wall construction', '24\' to 28\' clear heights', 'Built 2025'] },
-  { name: '3301 Shell Road', location: 'Georgetown, TX', tag: 'Acquisition + Phase 2 Development', detail: 'Acquisition followed by Phase 2 ground-up development.' },
-  { name: '101 Caribbean Drive', location: 'Corpus Christi, TX', tag: 'Ground-Up Development', detail: 'Ground-up development of an RV park, now operating as a KOA.',
+  { name: '3301 Shell Road', location: 'Georgetown, TX', tag: 'Acquisition + Phase 2 Development', detail: 'Acquisition followed by Phase 2 ground-up development.', image: '/3301-shell.jpg' },
+  { name: '101 Caribbean Drive', location: 'Corpus Christi, TX', tag: 'Ground-Up Development', detail: 'Ground-up development of an RV park, now operating as Firefly Resort.',
     facts: ['RV park built from the ground up', 'Sold'] },
   { name: 'Bluff\'s Landing Marina & Lodge', location: '4242 Laguna Shores Rd, Corpus Christi, TX', tag: 'Redevelopment', detail: 'Complete redevelopment of the marina.',
     facts: ['Marina fully redeveloped', 'Sold'] },
