@@ -115,7 +115,7 @@ const development: Project[] = [
 ];
 
 const acquisitions: Project[] = [
-  { name: 'Wimberley Medical', location: 'Wimberley, TX', tag: 'Acquisition', detail: '' },
+  { name: 'Wimberley Medical Plaza', location: '201 FM 3237, Wimberley, TX', tag: 'Acquisition', detail: '', image: '/wimberley-medical.jpg' },
   { name: '3900 FM 620', location: 'Bee Cave, TX', tag: 'Acquisition', detail: '' },
   { name: '320 North Ridge', location: 'Marble Falls, TX', tag: 'Acquisition', detail: '' },
   { name: '9110 US 183', location: 'Austin, TX', tag: 'Acquisition', detail: '' },
@@ -214,9 +214,14 @@ export default function PortfolioPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {acquisitions.map(project => (
-              <div key={project.name} className="bg-white rounded-lg border border-gray-100 shadow-sm p-5 border-l-4 border-l-gold">
-                <h3 className="font-semibold text-navy">{project.name}</h3>
-                <p className="text-gray-400 text-xs mt-1">{project.location}</p>
+              <div key={project.name} className="bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden border-l-4 border-l-gold">
+                {project.image && (
+                  <img src={project.image} alt={project.name} className="w-full h-40 object-cover" />
+                )}
+                <div className="p-5">
+                  <h3 className="font-semibold text-navy">{project.name}</h3>
+                  <p className="text-gray-400 text-xs mt-1">{project.location}</p>
+                </div>
               </div>
             ))}
           </div>
