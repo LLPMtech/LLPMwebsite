@@ -117,7 +117,8 @@ const development: Project[] = [
 const acquisitions: Project[] = [
   { name: 'Wimberley Medical Plaza', location: '201 FM 3237, Wimberley, TX', tag: 'Acquisition', detail: '', image: '/wimberley-medical.jpg',
     facts: ['Built 2014', '4 acres', '15,302 rentable SF', 'One vacancy'] },
-  { name: '3900 FM 620', location: 'Bee Cave, TX', tag: 'Acquisition', detail: '' },
+  { name: '3900 FM 620', location: 'Bee Cave, TX', tag: 'Acquisition', detail: '',
+    facts: ['Built 1996', '12,775 SF', '2.62 acres', 'Fully leased'] },
   { name: '320 North Ridge', location: '320 North Ridge Rd, Marble Falls, TX', tag: 'Acquisition', detail: '', image: '/320-north-ridge.jpg',
     facts: ['Flex space, built 2023', '4 buildings, 16 units', '26,400 rentable SF', '1.88 acres'] },
   { name: '9110 US 183', location: 'Austin, TX', tag: 'Acquisition', detail: '' },
