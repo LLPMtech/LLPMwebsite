@@ -167,9 +167,9 @@ export default function PortfolioPage() {
             Development
           </h2>
           <p className="text-gray-500 mb-6">We don&apos;t just manage property — we build it.</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="flex flex-wrap justify-center gap-4">
             {development.map(project => (
-              <div key={project.name} className="rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition bg-white">
+              <div key={project.name} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)] rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition bg-white">
                 <div
                   className="h-40 bg-gradient-to-br from-navy to-rust-orange bg-cover bg-center flex items-end p-4"
                   style={project.image ? { backgroundImage: `url(${project.image})` } : undefined}
