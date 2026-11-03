@@ -102,7 +102,6 @@ const development: Project[] = [
     image: '/bluffs-landing.jpg',
     facts: ['3,000 SF restaurant available for lease'],
     link: { href: '/properties', label: 'View restaurant lease listing' } },
-  { name: 'Bluff\'s Landing Marina & Lodge', location: 'Corpus Christi, TX', tag: 'Redevelopment', detail: 'Complete redevelopment of the marina.', facts: ['Marina fully redeveloped', 'Sold'] },
   { name: '12705 SH-29', location: 'Liberty Hill, TX', tag: 'Value-Add Expansion', detail: 'Value-add building expansion development on West State Highway 29.',
     image: '/12705-exterior.jpg',
     facts: ['New 5,000 SF building added to the existing 10-unit commercial building', '1.28-acre site'],
