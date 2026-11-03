@@ -84,11 +84,13 @@ interface Project {
   tag: string;
   detail: string;
   facts?: string[];
+  image?: string;
 }
 
 const development: Project[] = [
-  { name: 'Hangars Warehouse Park', location: 'Del Valle, TX', tag: 'Ground-Up Development', detail: 'Nine flex and logistics buildings next to Austin-Bergstrom Airport (ABIA), with direct access to FM 973 and visibility from SH-130.',
-    facts: ['9 buildings, built 2025', 'PEMB and tilt-wall construction', 'Spaces from 2,163 to 50,917 SF', '24\' to 28\' clear heights'] },
+  { name: 'The Hangars', location: '5615 FM 973, Del Valle, TX', tag: 'Ground-Up Development', detail: 'Nine-building Class A flex/industrial park next to Austin-Bergstrom Airport (ABIA), with multiple access points on FM 973.',
+    image: '/hangars.jpg',
+    facts: ['217,288 SF across 9 buildings', 'Flex (PEMB) and tilt-wall construction', '24\' to 28\' clear heights', 'Built 2025'] },
   { name: '3301 Shell Road', location: 'Georgetown, TX', tag: 'Acquisition + Phase 2 Development', detail: 'Acquisition followed by Phase 2 ground-up development.' },
   { name: '101 Caribbean Drive', location: 'Corpus Christi, TX', tag: 'Ground-Up Development', detail: 'Ground-up development of an RV park.' },
   { name: '12705 SH-29', location: 'Liberty Hill, TX', tag: 'Value-Add Expansion', detail: 'Value-add building expansion development.' },
@@ -146,8 +148,11 @@ export default function PortfolioPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {development.map(project => (
               <div key={project.name} className="rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition bg-white">
-                <div className="h-28 bg-gradient-to-br from-navy to-rust-orange flex items-end p-4">
-                  <span className="bg-gold text-navy text-xs font-semibold px-2 py-1 rounded">{project.tag}</span>
+                <div
+                  className="h-40 bg-gradient-to-br from-navy to-rust-orange bg-cover bg-center flex items-end p-4"
+                  style={project.image ? { backgroundImage: `url(${project.image})` } : undefined}
+                >
+                  <span className="bg-gold text-navy text-xs font-semibold px-2 py-1 rounded shadow">{project.tag}</span>
                 </div>
                 <div className="p-4">
                   <h3 className="font-semibold text-navy mb-1">{project.name}</h3>
