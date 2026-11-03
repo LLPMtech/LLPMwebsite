@@ -113,6 +113,15 @@ const properties: Property[] = [
     loopnetUrl: 'https://www.loopnet.com/Listing/5716-Hwy-290-W-Austin-TX/25328916/',
     description: 'Shopping center space for lease on Hwy 290 W in Austin, TX.',
   },
+  {
+    id: '14',
+    name: "Bluff's Landing Restaurant",
+    address: '4242 Laguna Shores Rd, Corpus Christi, TX 78418',
+    type: 'Retail',
+    status: 'For Lease',
+    loopnetUrl: 'https://www.loopnet.com/Listing/4242-Laguna-Shores-Rd-Corpus-Christi-TX/40093538/',
+    description: "Restaurant space for lease at Bluff's Landing Marina & Lodge in Corpus Christi, TX.",
+  },
 ];
 
 const typeColors: Record<string, string> = {
