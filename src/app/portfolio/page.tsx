@@ -9,6 +9,7 @@ interface Property {
   city: string;
   state: string;
   image?: string;
+  gallery?: { src: string; label: string }[];
 }
 
 const properties: Property[] = [
@@ -96,7 +97,15 @@ const development: Project[] = [
     facts: ['RV park built from the ground up', 'Sold'] },
   { name: 'Bluff\'s Landing Marina & Lodge', location: '4242 Laguna Shores Rd, Corpus Christi, TX', tag: 'Redevelopment', detail: 'Complete redevelopment of the marina.',
     facts: ['Marina fully redeveloped', 'Sold'] },
-  { name: '12705 SH-29', location: 'Liberty Hill, TX', tag: 'Value-Add Expansion', detail: 'Value-add building expansion development.' },
+  { name: '12705 SH-29', location: 'Liberty Hill, TX', tag: 'Value-Add Expansion', detail: 'Value-add building expansion development on West State Highway 29.',
+    image: '/12705-exterior.jpg',
+    facts: ['New 5,000 SF building added to the existing 10-unit commercial building', '1.28-acre site'],
+    gallery: [
+      { src: '/12705-rendering.jpg', label: 'Rendering' },
+      { src: '/12705-siteplan.jpg', label: 'Site plan' },
+      { src: '/12705-entry.jpg', label: 'Entry' },
+      { src: '/12705-interior.jpg', label: 'Interior' },
+    ] },
 ];
 
 const acquisitions: Project[] = [
@@ -161,6 +170,16 @@ export default function PortfolioPage() {
                   <h3 className="font-semibold text-navy mb-1">{project.name}</h3>
                   <p className="text-gray-400 text-xs mb-2">{project.location}</p>
                   <p className="text-gray-600 text-sm">{project.detail}</p>
+                  {project.gallery && (
+                    <div className="mt-3 flex gap-2">
+                      {project.gallery.map(g => (
+                        <a key={g.src} href={g.src} target="_blank" rel="noopener noreferrer" title={g.label} className="block w-1/4">
+                          <img src={g.src} alt={`${project.name} ${g.label}`} className="h-12 w-full object-cover rounded border border-gray-200 hover:border-gold transition" />
+                          <span className="block text-[10px] text-gray-400 text-center mt-1">{g.label}</span>
+                        </a>
+                      ))}
+                    </div>
+                  )}
                   {project.facts && (
                     <ul className="mt-3 space-y-1 text-xs text-navy">
                       {project.facts.map(f => (
