@@ -115,7 +115,8 @@ const development: Project[] = [
 ];
 
 const acquisitions: Project[] = [
-  { name: 'Wimberley Medical Plaza', location: '201 FM 3237, Wimberley, TX', tag: 'Acquisition', detail: '', image: '/wimberley-medical.jpg' },
+  { name: 'Wimberley Medical Plaza', location: '201 FM 3237, Wimberley, TX', tag: 'Acquisition', detail: '', image: '/wimberley-medical.jpg',
+    facts: ['Built 2014', '4 acres', '15,302 rentable SF', 'One vacancy'] },
   { name: '3900 FM 620', location: 'Bee Cave, TX', tag: 'Acquisition', detail: '' },
   { name: '320 North Ridge', location: 'Marble Falls, TX', tag: 'Acquisition', detail: '' },
   { name: '9110 US 183', location: 'Austin, TX', tag: 'Acquisition', detail: '' },
@@ -221,6 +222,13 @@ export default function PortfolioPage() {
                 <div className="p-5">
                   <h3 className="font-semibold text-navy">{project.name}</h3>
                   <p className="text-gray-400 text-xs mt-1">{project.location}</p>
+                  {project.facts && (
+                    <ul className="mt-3 space-y-1 text-xs text-navy">
+                      {project.facts.map(f => (
+                        <li key={f} className="flex items-start"><span className="text-rust-orange mr-2">&#9656;</span>{f}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             ))}
