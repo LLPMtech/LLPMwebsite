@@ -86,6 +86,7 @@ interface Project {
   facts?: string[];
   image?: string;
   gallery?: { src: string; label: string }[];
+  link?: { href: string; label: string };
 }
 
 const development: Project[] = [
@@ -98,7 +99,9 @@ const development: Project[] = [
     image: '/101-caribbean.jpg',
     facts: ['66-unit waterfront RV park on the Texas Coastal Bend', 'Pool, 200-ft fishing pier, boat ramp and slips', 'Sold'] },
   { name: 'Bluff\'s Landing Marina & Lodge', location: '4242 Laguna Shores Rd, Corpus Christi, TX', tag: 'Redevelopment', detail: 'Complete redevelopment of the marina.',
-    facts: ['Marina fully redeveloped', 'Sold'] },
+    image: '/bluffs-landing.jpg',
+    facts: ['Marina fully redeveloped', 'Marina sold', '3,000 SF restaurant available for lease'],
+    link: { href: '/properties', label: 'View restaurant lease listing' } },
   { name: '12705 SH-29', location: 'Liberty Hill, TX', tag: 'Value-Add Expansion', detail: 'Value-add building expansion development on West State Highway 29.',
     image: '/12705-exterior.jpg',
     facts: ['New 5,000 SF building added to the existing 10-unit commercial building', '1.28-acre site'],
@@ -181,6 +184,11 @@ export default function PortfolioPage() {
                         </a>
                       ))}
                     </div>
+                  )}
+                  {project.link && (
+                    <a href={project.link.href} className="mt-3 inline-block text-xs font-semibold text-rust-orange hover:underline">
+                      {project.link.label} &rarr;
+                    </a>
                   )}
                   {project.facts && (
                     <ul className="mt-3 space-y-1 text-xs text-navy">
