@@ -92,6 +92,23 @@ export default function AboutPage() {
           {/* Divider */}
           <div className="border-t border-gray-100 mb-20" />
 
+          {/* Development */}
+          <div className="mb-20">
+            <h2 className="text-3xl font-bold text-navy mb-6">We Build, Too</h2>
+            <p className="text-gray-600 text-lg leading-relaxed mb-4">
+              Owning property is only part of the story. LLPM develops it. We built The Hangars, a nine-building, 217,288 SF warehouse park in Del Valle; developed a waterfront marina, hotel and event space from the ground up in Corpus Christi, along with a 66-unit RV park and offsite dry boat storage; and added a new building to an existing center in Liberty Hill.
+            </p>
+            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              Building what we hold gives us control over quality, cost and long-term performance.
+            </p>
+            <Link href="/portfolio#development" className="inline-block text-rust-orange font-bold hover:underline">
+              See our development projects &rarr;
+            </Link>
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-gray-100 mb-20" />
+
           {/* Stats */}
           <div className="bg-navy rounded-2xl p-12 text-white mb-20">
             <h2 className="text-3xl font-bold text-center mb-12">LLPM By the Numbers</h2>

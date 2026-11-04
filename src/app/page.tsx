@@ -81,6 +81,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Development Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold text-navy mb-4">We Build, Too</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              LLPM doesn&apos;t just own and manage — we develop. From a nine-building warehouse park to a waterfront marina, hotel and RV park, we build the properties we hold.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+            {[
+              { src: '/hangars.jpg', label: 'The Hangars — Del Valle, TX' },
+              { src: '/12705-exterior.jpg', label: '12705 SH-29 Expansion — Liberty Hill, TX' },
+              { src: '/101-caribbean.jpg', label: '101 Caribbean Drive — Corpus Christi, TX' },
+            ].map(item => (
+              <div key={item.src} className="rounded-lg overflow-hidden shadow border border-gray-100">
+                <img src={item.src} alt={item.label} className="w-full h-48 object-cover" />
+                <p className="p-3 text-sm font-semibold text-navy">{item.label}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <Link
+              href="/portfolio#development"
+              className="inline-block bg-navy text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition"
+            >
+              See Our Development Work
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="bg-navy text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

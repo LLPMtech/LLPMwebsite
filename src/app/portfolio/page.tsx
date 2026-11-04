@@ -95,13 +95,6 @@ const development: Project[] = [
     facts: ['217,288 SF across 9 buildings', 'Flex (PEMB) and tilt-wall construction', '24\' to 28\' clear heights', 'Built 2025'] },
   { name: '3301 Shell Road', location: 'Georgetown, TX', tag: 'Acquisition + Phase 2 Development', detail: 'Acquisition followed by Phase 2 ground-up development.', image: '/3301-shell.jpg',
     facts: ['17 suites'] },
-  { name: '101 Caribbean Drive', location: 'Corpus Christi, TX', tag: 'Ground-Up Development', detail: 'Ground-up development of an RV park, now operating as Firefly Resort.',
-    image: '/101-caribbean.jpg',
-    facts: ['66-unit waterfront RV park on the Texas Coastal Bend', 'Pool, 200-ft fishing pier, boat ramp and slips', 'Sold'] },
-  { name: 'Waterfront Restaurant', location: '4242 Laguna Shores Rd, Corpus Christi, TX', tag: 'Redevelopment', detail: 'Redevelopment of the waterfront restaurant building.',
-    image: '/bluffs-landing.jpg',
-    facts: ['3,000 SF restaurant available for lease'],
-    link: { href: '/properties', label: 'View restaurant lease listing' } },
   { name: '12705 SH-29', location: 'Liberty Hill, TX', tag: 'Value-Add Expansion', detail: 'Value-add building expansion development on West State Highway 29.',
     image: '/12705-exterior.jpg',
     facts: ['New 5,000 SF building added to the existing 10-unit commercial building', '1.28-acre site'],
@@ -111,6 +104,15 @@ const development: Project[] = [
       { src: '/12705-entry.jpg', label: 'Entry' },
       { src: '/12705-interior.jpg', label: 'Interior' },
     ] },
+  { name: '13750 W Highway 29 Storage', location: 'Liberty Hill, TX', tag: 'Ground-Up Development', detail: 'Storage built on the west side of the property.' },
+  { name: 'Waterfront Marina, Hotel & Event Space', location: '4242 Laguna Shores Rd, Corpus Christi, TX', tag: 'Ground-Up Development', detail: 'Ground-up development of the entire marina, hotel and event space.',
+    image: '/bluffs-landing.jpg',
+    facts: ['3,000 SF restaurant available for lease'],
+    link: { href: '/properties', label: 'View restaurant lease listing' } },
+  { name: 'Dry Boat Storage Warehouses', location: 'Corpus Christi, TX', tag: 'Ground-Up Development', detail: 'Dry boat storage warehouses developed separately, offsite from the waterfront project.' },
+  { name: '101 Caribbean Drive', location: 'Corpus Christi, TX', tag: 'Ground-Up Development', detail: 'Ground-up development of an RV park, now operating as Firefly Resort.',
+    image: '/101-caribbean.jpg',
+    facts: ['66-unit waterfront RV park on the Texas Coastal Bend', 'Pool, 200-ft fishing pier, boat ramp and slips', 'Sold'] },
 ];
 
 const acquisitions: Project[] = [
@@ -160,13 +162,13 @@ export default function PortfolioPage() {
 
 
       {/* Development */}
-      <section className="bg-white">
+      <section id="development" className="bg-white scroll-mt-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <h2 className="text-3xl font-bold text-navy mb-2 flex items-center">
             <span className="w-2 h-8 bg-rust-orange rounded mr-3 inline-block" />
             Development
           </h2>
-          <p className="text-gray-500 mb-6">We don&apos;t just manage property — we build it.</p>
+          <p className="text-gray-500 mb-6">We don&apos;t just manage property — we build it. {development.length} projects across Central Texas and the Texas coast.</p>
           <div className="flex flex-wrap justify-center gap-4">
             {development.map(project => (
               <div key={project.name} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)] rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition bg-white">
@@ -210,11 +212,11 @@ export default function PortfolioPage() {
       </section>
 
       {/* Acquisitions */}
-      <section className="bg-gray-50 border-y border-gray-100">
+      <section id="acquisitions" className="bg-gray-50 border-y border-gray-100 scroll-mt-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <h2 className="text-3xl font-bold text-navy mb-6 flex items-center">
             <span className="w-2 h-8 bg-gold rounded mr-3 inline-block" />
-            Acquisitions
+            Recent Acquisitions
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {acquisitions.map(project => (
